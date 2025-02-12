@@ -55,10 +55,7 @@ const ManifestoPage = () => {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen bg-black text-white selection:bg-blue-500/30"
-    >
+    <div className="min-h-screen bg-black text-white selection:bg-blue-500/30">
       {/* Grid Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div
@@ -104,15 +101,15 @@ const ManifestoPage = () => {
       </section>
 
       {/* The Spark Section */}
-      <section className="relative py-32">
+      <section className="relative py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Section>
-              <Heading level={2} className="mb-16">
+              <Heading level={2} className="mb-12">
                 The Spark
               </Heading>
 
-              <RetroTerminal className="mb-12">
+              <RetroTerminal className="mb-8">
                 <div className="font-mono text-sm">
                   <div className="flex justify-between text-gray-500 mb-4">
                     <span>TURBO C++ 3.0</span>
@@ -121,8 +118,8 @@ const ManifestoPage = () => {
                   <pre className="text-blue-400 overflow-x-auto">
                     {`#include <stdio.h>
 void main() {
-    printf("Hello, World!");
-    getch();
+  printf("Hello, World!");
+  getch();
 }`}
                   </pre>
                 </div>
@@ -186,11 +183,11 @@ void main() {
       </section>
 
       {/* The Drift Section */}
-      <section className="relative py-32 bg-gradient-to-b from-black to-blue-950/20">
+      <section className="relative py-24 bg-gradient-to-b from-black to-blue-950/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Section>
-              <Heading level={2} className="mb-16">
+              <Heading level={2} className="mb-12">
                 The Drift
               </Heading>
 
@@ -204,14 +201,14 @@ void main() {
 
                 <Quote>We should be building incredible things.</Quote>
 
-                <Text className="mt-8 mb-12">
+                <Text className="mt-8 mb-8">
                   But here's what our day actually looks like:
                 </Text>
               </Prose>
 
               <DriftVisual />
 
-              <Prose className="mt-16">
+              <Prose className="mt-12">
                 <Text>
                   We're drowning in JIRA tickets. Racing through two-week
                   sprints. Building micro-features for micro-services. Updating
@@ -219,7 +216,7 @@ void main() {
                   points.
                 </Text>
 
-                <div className="my-12 space-y-4">
+                <div className="my-8 space-y-4">
                   <Text>
                     We've traded systems thinking for feature shipping.
                   </Text>
@@ -248,11 +245,11 @@ void main() {
       </section>
 
       {/* The Workshop Section */}
-      <section className="relative py-32 bg-gradient-to-b from-blue-950/20 to-black">
+      <section className="relative py-24 bg-gradient-to-b from-blue-950/20 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Section>
-              <Heading level={2} className="mb-16">
+              <Heading level={2} className="mb-12">
                 The Workshop
               </Heading>
               <WorkshopVisual />
@@ -323,7 +320,7 @@ void main() {
       </section>
 
       {/* Call to Action */}
-      <section className="relative py-32">
+      <section className="relative py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Section>

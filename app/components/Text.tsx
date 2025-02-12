@@ -6,7 +6,11 @@ interface TextProps {
 }
 
 const Text: React.FC<TextProps> = ({ children, className = "" }) => (
-  <p className={`text-gray-300 leading-relaxed ${className}`}>{children}</p>
+  <p
+    className={`text-base md:text-lg text-gray-300 leading-relaxed ${className}`}
+  >
+    {children}
+  </p>
 );
 
 export default Text;
