@@ -59,15 +59,27 @@ const ManifestoPage = () => {
       {/* Grid Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[#030303]">
+          {/* Main grid */}
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage:
-                "linear-gradient(to right, #ffffff1a 1px, transparent 1px), linear-gradient(to bottom, #ffffff1a 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
+              backgroundImage: `
+                linear-gradient(to right, #ffffff1a 1px, transparent 1px),
+                linear-gradient(to bottom, #ffffff1a 1px, transparent 1px),
+                linear-gradient(to right, #ffffff08 1px, transparent 1px),
+                linear-gradient(to bottom, #ffffff08 1px, transparent 1px)
+              `,
+              backgroundSize: "80px 80px, 80px 80px, 16px 16px, 16px 16px",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
+          {/* Radial gradient for depth */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 20%, rgba(3, 3, 3, 0) 0%, #030303 100%)",
+            }}
+          />
         </div>
       </div>
 
