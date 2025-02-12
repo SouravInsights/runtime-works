@@ -87,7 +87,7 @@ const ManifestoPage = () => {
                 <span className="text-green-500">$</span> cat manifesto.txt
               </div>
               <Heading
-                level={1}
+                level={2}
                 className="mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"
               >
                 runtime.works
