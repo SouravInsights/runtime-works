@@ -27,9 +27,21 @@ const RetroTerminal: React.FC<Props> = ({ children, className = "" }) => (
 );
 
 const Quote: React.FC<Props> = ({ children }) => (
-  <blockquote className="text-xl md:text-2xl border-l-4 border-blue-500 pl-6 my-8 font-light italic text-gray-300">
+  <motion.blockquote
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="text-xl md:text-2xl border-l-4 border-blue-500 pl-6 my-8 font-light italic text-gray-300"
+  >
     {children}
-  </blockquote>
+  </motion.blockquote>
+);
+
+const Highlight: React.FC<Props> = ({ children }) => (
+  <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+    {children}
+  </span>
 );
 
 const Section: React.FC<Props> = ({ children, className = "" }) => (
@@ -106,8 +118,8 @@ const ManifestoPage = () => {
               >
                 runtime.works
               </Heading>
-              <Text className="text-lg sm:text-xl text-gray-400">
-                This isn't another dev agency manifesto.
+              <Text className="text-xl sm:text-2xl text-gray-400">
+                This isn't <Highlight>another dev agency</Highlight> manifesto.
               </Text>
             </motion.div>
           </RetroTerminal>
@@ -152,8 +164,8 @@ void main() {
 
                 <Text>
                   The syntax was confusing. The semicolons were annoying. The
-                  compiler errors were cryptic. But none of that mattered when
-                  you pressed F9.
+                  compiler errors were cryptic. But none of that mattered{" "}
+                  <Highlight>when you pressed F9.</Highlight>
                 </Text>
 
                 <Quote>Your code ran.</Quote>
@@ -161,8 +173,8 @@ void main() {
                 <Text>
                   Not in the textbook diagrams. Not on the whiteboard
                   flowcharts. Not in the countless practice questions you solved
-                  on paper. It ran here, on this machine, in this world. You
-                  made a computer do something.
+                  on paper. It ran here, on this machine, in this world.{" "}
+                  <Highlight>You made a computer do something.</Highlight>
                 </Text>
 
                 <Quote>That's runtime.</Quote>
@@ -181,7 +193,7 @@ void main() {
                   you first bridged the gap between writing code and making
                   something real. When you realized that these machines weren't
                   just for playing Counter-Strike or checking Orkut. They were
-                  portals where logic became reality.
+                  portals where <Highlight>logic became reality.</Highlight>
                 </Text>
 
                 <Text>
@@ -240,7 +252,8 @@ void main() {
                 </div>
 
                 <Text>
-                  The modern dev shop has become a factory. Kanban boards are
+                  The modern dev shop{" "}
+                  <Highlight>has become a factory</Highlight>. Kanban boards are
                   assembly lines. Code reviews are quality control. Sprints are
                   production quotas. Developers are resources. Everything is a
                   ticket, a metric, a deliverable.
@@ -248,9 +261,10 @@ void main() {
 
                 <Text>
                   Look at your terminal. When was the last time you wrote
-                  something that made you lean back and think: "This. This is
-                  why I code." When did we stop being craftspeople who build
-                  systems and start being ticket-closers who ship features?
+                  something that made you lean back and think:{" "}
+                  <Highlight>"This is why I code."</Highlight> When did we stop
+                  being craftspeople who build systems and start being
+                  ticket-closers who ship features?
                 </Text>
               </Prose>
             </Section>
@@ -277,7 +291,10 @@ void main() {
                   software development.
                 </Text>
 
-                <Quote>We're here to build systems that matter.</Quote>
+                <Quote>
+                  We're here to{" "}
+                  <Highlight>build products that matter.</Highlight>
+                </Quote>
 
                 <Text>
                   This is a workshop, not a factory. A place where code isn't
@@ -294,12 +311,13 @@ void main() {
                   <li>
                     <Text>
                       We take on projects where the hard part isn't the code –
-                      it's understanding the system.
+                      it's <Highlight>understanding the system.</Highlight>
                     </Text>
                   </li>
                   <li>
                     <Text>
-                      We work with clients who value thoughtful architecture
+                      We work with clients who value{" "}
+                      <Highlight>thoughtful architecture</Highlight>
                       over quick fixes.
                     </Text>
                   </li>
@@ -324,8 +342,8 @@ void main() {
                 <Text className="mt-12">
                   We're a small team of builders who still believe in the craft
                   of software. People who get excited about elegant solutions.
-                  Who see coding as a creative act. Who care about what happens
-                  at runtime.
+                  Who see <Highlight>coding as a creative act.</Highlight> Who
+                  care about what happens at runtime.
                 </Text>
               </Prose>
             </Section>
@@ -343,7 +361,10 @@ void main() {
                   <Text>If you've read this far, you might be one of us.</Text>
                   <Text>
                     We're not promising to change the world. We're just creating
-                    a space where builders can do their best work.
+                    a space{" "}
+                    <Highlight>
+                      where builders can do their best work.
+                    </Highlight>
                   </Text>
                   <Quote>That's runtime.works.</Quote>
                 </Prose>
@@ -356,8 +377,8 @@ void main() {
                     </div>
                     <div className="text-blue-400 space-y-2">
                       <Text>
-                        We're a small team that cares about building good
-                        software.
+                        We're a small team that cares about{" "}
+                        <Highlight>building good software.</Highlight>
                       </Text>
                       <Text>
                         No buzzwords. No over-engineering. Just solid work.
