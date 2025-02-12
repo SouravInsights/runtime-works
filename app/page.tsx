@@ -64,47 +64,12 @@ const ManifestoPage = () => {
             style={{
               backgroundImage:
                 "linear-gradient(to right, #ffffff1a 1px, transparent 1px), linear-gradient(to bottom, #ffffff1a 1px, transparent 1px)",
-              backgroundSize: "64px 64px",
-            }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, #ffffff0d 1px, transparent 1px), linear-gradient(to bottom, #ffffff0d 1px, transparent 1px)",
-              backgroundSize: "16px 16px",
+              backgroundSize: "48px 48px",
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
         </div>
       </div>
-
-      {/* simple matrix pattern */}
-      {/* <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-black">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-          linear-gradient(to right, #00ff0008 1px, transparent 1px),
-          linear-gradient(to bottom, #00ff0008 1px, transparent 1px)
-        `,
-              backgroundSize: "32px 32px",
-            }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-          linear-gradient(to right, #00ff0012 1px, transparent 1px),
-          linear-gradient(to bottom, #00ff0012 1px, transparent 1px)
-        `,
-              backgroundSize: "128px 128px",
-            }}
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,rgba(0,0,0,0.8)_80%)]" />
-        </div>
-      </div> */}
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
