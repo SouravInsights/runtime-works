@@ -3,10 +3,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { DriftVisual, WorkshopVisual } from "./components/visuals";
-import Text from "./components/Text";
-import Heading from "./components/Heading";
-import Prose from "./components/Prose";
+import { DriftVisual, WorkshopVisual } from "../components/visuals";
+import Text from "../components/Text";
+import Heading from "../components/Heading";
+import Prose from "../components/Prose";
 
 interface Props {
   children: ReactNode;
