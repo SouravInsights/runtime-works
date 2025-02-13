@@ -69,6 +69,7 @@ const ManifestoPage = () => {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-blue-500/30">
       {/* Grid Background */}
+
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[#030303]">
           {/* Main grid */}
@@ -95,39 +96,132 @@ const ManifestoPage = () => {
         </div>
       </div>
 
+      {/* 8 bit pattern */}
+      {/* <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[#030303]">
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h8v8H0zm8 8h8v8H8zm8-8h8v8h-8zm8 8h8v8h-8zM0 16h8v8H0zm8 8h8v8H8zm8-8h8v8h-8zm8 8h8v8h-8z' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E")`,
+              backgroundSize: "32px 32px",
+            }}
+          />
+
+          <div
+            className="absolute inset-0 opacity-[0.15]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
+              backgroundSize: "128px 128px",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
+        </div>
+      </div> */}
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="container mx-auto px-4"
-        >
-          <RetroTerminal className="max-w-4xl mx-auto">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+        </div>
+
+        {/* Main Content */}
+        <div className="container mx-auto relative z-10 p-8">
+          <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-8"
             >
-              <div className="font-mono text-sm mb-4 md:mb-6 text-gray-400">
-                <span className="text-green-500">$</span> cat manifesto.txt
-              </div>
-              <Heading
-                level={2}
-                className="mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"
-              >
-                runtime.works
-              </Heading>
-              <Text className="text-xl sm:text-2xl text-gray-400">
-                This isn't <Highlight>another dev agency</Highlight> manifesto.
-              </Text>
+              <h1 className="text-2xl md:text-3xl text-gray-400 mb-6 font-mono">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                >
+                  <span className="text-green-500">$</span> ./init
+                </motion.span>
+              </h1>
             </motion.div>
-          </RetroTerminal>
-        </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Left Side - Terminal */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                <RetroTerminal>
+                  <div className="font-mono space-y-4">
+                    <div className="text-gray-400">
+                      <span className="text-green-500">$</span> whoweare
+                    </div>
+                    <div className="text-blue-400">
+                      <p>
+                        We're craftspeople who believe in elegant solutions, not
+                        quick fixes. Building software like it's meant to last.
+                      </p>
+                    </div>
+                    <div className="text-gray-400 mt-6">
+                      <span className="text-green-500">$</span> ps aux | grep
+                      patterns
+                    </div>
+                    <div className="text-blue-400">
+                      deep-work RUNNING craft RUNNING meetings KILLED sprints
+                      STOPPED
+                    </div>
+                  </div>
+                </RetroTerminal>
+              </motion.div>
+
+              {/* Right Side - Main Message */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="space-y-6"
+              >
+                <h2 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                  runtime.works
+                </h2>
+                <p className="text-xl md:text-2xl text-gray-300">
+                  This isn't <Highlight>another dev agency</Highlight>{" "}
+                  manifesto. This is a story about bringing back the{" "}
+                  <Highlight>craft</Highlight> of software.
+                </p>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                  className="pt-4"
+                >
+                  <button
+                    onClick={() => {
+                      const sparkSection =
+                        document.getElementById("spark-section");
+                      sparkSection?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                    }}
+                    className="px-6 py-3 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors"
+                  >
+                    Read our story →
+                  </button>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
       </section>
 
       {/* The Spark Section */}
-      <section className="relative py-24">
+      <section id="spark-section" className="relative py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Section>
