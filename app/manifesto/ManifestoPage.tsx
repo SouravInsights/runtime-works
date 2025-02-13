@@ -247,10 +247,11 @@ void main() {
 
               <Prose>
                 <Text>
-                  Remember writing this program in C in the computer lab, that
-                  ancient PC with Windows XP? The worn-out keyboard where the
-                  spacebar needed an extra push. You typed out this very program
-                  - something about <Highlight>printf</Highlight> and{" "}
+                  <Highlight>Remember writing this program</Highlight> in C in
+                  the computer lab, that ancient PC with Windows XP? The
+                  worn-out keyboard where the spacebar needed an extra push. You
+                  typed out this very program - something about{" "}
+                  <Highlight>printf</Highlight> and{" "}
                   <Highlight>void main()</Highlight>. Your notebook open beside
                   you, filled with flowcharts and algorithms from morning
                   lectures. The textbook, borrowed from the library, propped
