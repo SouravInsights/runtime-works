@@ -29,8 +29,33 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "runtime.works",
-  description: "Building software that matters. Where code meets reality.",
+  title: "runtime.works - Building better software",
+  description:
+    "A software studio that takes time to build things right. We focus on understanding problems deeply and engineering solutions that grow with your needs.",
+  openGraph: {
+    title: "runtime.works - Building better software",
+    description:
+      "A software studio that takes time to build things right. We focus on understanding problems deeply and engineering solutions that grow with your needs.",
+    url: "https://runtime.works",
+    siteName: "runtime.works",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "runtime.works - Building better software",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "runtime.works - Building better software",
+    description:
+      "A software studio that takes time to build things right. We focus on understanding problems deeply and engineering solutions that grow with your needs.",
+    creator: "@worksruntime",
+  },
 };
 
 export default function RootLayout({

@@ -95,37 +95,6 @@ const FeatureCard = ({
   </div>
 );
 
-// const PixelBorder = ({
-//   children,
-//   className = "",
-// }: {
-//   children: React.ReactNode;
-//   className?: string;
-// }) => (
-//   <div className={`relative ${className}`}>
-//     {/* Top Border */}
-//     <div className="absolute top-0 left-0 right-0 h-2 bg-blue-500/20">
-//       <div className="absolute top-0 left-0 w-2 h-2 bg-blue-500/40" />
-//       <div className="absolute top-0 right-0 w-2 h-2 bg-blue-500/40" />
-//     </div>
-
-//     {/* Bottom Border */}
-//     <div className="absolute bottom-0 left-0 right-0 h-2 bg-blue-500/20">
-//       <div className="absolute bottom-0 left-0 w-2 h-2 bg-blue-500/40" />
-//       <div className="absolute bottom-0 right-0 w-2 h-2 bg-blue-500/40" />
-//     </div>
-
-//     {/* Left Border */}
-//     <div className="absolute left-0 top-2 bottom-2 w-2 bg-blue-500/20" />
-
-//     {/* Right Border */}
-//     <div className="absolute right-0 top-2 bottom-2 w-2 bg-blue-500/20" />
-
-//     {/* Content */}
-//     <div className="p-2">{children}</div>
-//   </div>
-// );
-
 const LandingPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
