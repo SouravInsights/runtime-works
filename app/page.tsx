@@ -12,10 +12,6 @@ interface ProjectCardProps {
   link: string;
 }
 
-interface CodeBlockProps {
-  children: React.ReactNode;
-}
-
 const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
@@ -60,14 +56,41 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   </motion.div>
 );
 
-const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => (
-  <div className="font-mono text-sm bg-black/70 backdrop-blur rounded-lg border border-white/10 p-4">
-    <div className="flex items-center space-x-2 mb-3 text-gray-500">
-      <div className="w-3 h-3 rounded-full bg-red-500/50" />
-      <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-      <div className="w-3 h-3 rounded-full bg-green-500/50" />
+const CodeBlock = ({ children }: { children: React.ReactNode }) => (
+  <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] overflow-hidden">
+    {/* Terminal dots */}
+    <div className="absolute top-0 left-0 right-0 h-8 bg-black/40 border-b border-white/[0.08] flex items-center px-4 gap-2">
+      <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+      <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
+      <div className="w-3 h-3 rounded-full bg-[#28C840]" />
     </div>
-    <div className="text-gray-300 space-y-2">{children}</div>
+
+    {/* Code content */}
+    <div className="pt-12 p-6 font-mono text-sm">{children}</div>
+  </div>
+);
+
+const FeatureCard = ({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) => (
+  <div className="relative group">
+    {/* Gradient background */}
+    <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+    {/* Content */}
+    <div className="relative bg-white/[0.02] backdrop-blur-sm border border-white/[0.08] rounded-lg p-6 h-full">
+      <div className="flex flex-col items-center text-center space-y-4">
+        {icon}
+        <h3 className="text-lg font-medium text-white">{title}</h3>
+        <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+      </div>
+    </div>
   </div>
 );
 
@@ -144,28 +167,33 @@ const LandingPage = () => {
       />
 
       {/* Background Grid */}
-      <div className="fixed inset-0">
-        <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
+      <div className="fixed inset-0 bg-[#040407]">
+        <motion.div
+          className="absolute inset-0 opacity-[0.1]"
+          style={{ y: backgroundY }}
+        >
           <div
             className="absolute inset-0"
             style={{
               backgroundImage: `
-                linear-gradient(to right, #ffffff0a 1px, transparent 1px),
-                linear-gradient(to bottom, #ffffff0a 1px, transparent 1px)
+                linear-gradient(to right, #8B8B8B 1px, transparent 1px),
+                linear-gradient(to bottom, #8B8B8B 1px, transparent 1px)
               `,
-              backgroundSize: "64px 64px",
+              backgroundSize: "80px 80px",
             }}
           />
           <div
             className="absolute inset-0"
             style={{
               backgroundImage: `
-                linear-gradient(to right, #ffffff05 1px, transparent 1px),
-                linear-gradient(to bottom, #ffffff05 1px, transparent 1px)
+                linear-gradient(to right, #8B8B8B 1px, transparent 1px),
+                linear-gradient(to bottom, #8B8B8B 1px, transparent 1px)
               `,
-              backgroundSize: "16px 16px",
+              backgroundSize: "20px 20px",
+              opacity: 0.5,
             }}
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#040407] via-transparent to-transparent" />
         </motion.div>
       </div>
 
@@ -195,71 +223,52 @@ const LandingPage = () => {
                 </p>
               </div>
 
-              <CodeBlock>
-                <div className="opacity-50">Our approach is simple</div>
-                <div className="pl-4">
-                  <span className="text-blue-400">const</span>{" "}
-                  <span className="text-purple-400">approach</span> = {"{"}
-                </div>
-                <div className="pl-8">
-                  thoughtfulArchitecture:{" "}
-                  <span className="text-green-400">true</span>,
-                  <br />
-                  deepUnderstanding:{" "}
-                  <span className="text-green-400">true</span>,
-                  <br />
-                  quickFixes: <span className="text-red-400">false</span>
-                </div>
-                <div className="pl-4">{"}"}</div>
-              </CodeBlock>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <CodeBlock>
+                  <div className="text-gray-400">Our approach is simple</div>
+                  <div className="mt-4">
+                    <span className="text-[#60A5FA]">const</span>{" "}
+                    <span className="text-[#A78BFA]">approach</span> = {"{"}
+                  </div>
+                  <div className="pl-8 space-y-1">
+                    <div>
+                      thoughtfulArchitecture:{" "}
+                      <span className="text-[#34D399]">true</span>,
+                    </div>
+                    <div>
+                      deepUnderstanding:{" "}
+                      <span className="text-[#34D399]">true</span>,
+                    </div>
+                    <div>
+                      quickFixes: <span className="text-[#EF4444]">false</span>
+                    </div>
+                  </div>
+                  <div>{"}"}</div>
+                </CodeBlock>
+              </motion.div>
             </motion.div>
 
+            {/* Feature Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex flex-col items-center text-center p-6 bg-white/5 rounded-lg border border-white/10"
-              >
-                <Terminal size={24} className="text-blue-400 mb-4" />
-                <h3 className="text-lg font-semibold mb-2">
-                  Deep Understanding
-                </h3>
-                <p className="text-gray-400 text-sm">
-                  We take time to understand the problem space before writing a
-                  single line of code.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex flex-col items-center text-center p-6 bg-white/5 rounded-lg border border-white/10"
-              >
-                <Code2 size={24} className="text-purple-400 mb-4" />
-                <h3 className="text-lg font-semibold mb-2">
-                  Thoughtful Architecture
-                </h3>
-                <p className="text-gray-400 text-sm">
-                  Building software that's meant to last, not just to ship.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="flex flex-col items-center text-center p-6 bg-white/5 rounded-lg border border-white/10"
-              >
-                <Cpu size={24} className="text-green-400 mb-4" />
-                <h3 className="text-lg font-semibold mb-2">
-                  Impact at Runtime
-                </h3>
-                <p className="text-gray-400 text-sm">
-                  Creating solutions that make a real difference when deployed.
-                </p>
-              </motion.div>
+              <FeatureCard
+                icon={<Terminal size={24} className="text-[#60A5FA]" />}
+                title="Deep Understanding"
+                description="We take time to understand the problem space before writing a single line of code."
+              />
+              <FeatureCard
+                icon={<Code2 size={24} className="text-[#A78BFA]" />}
+                title="Thoughtful Architecture"
+                description="Building software that's meant to last, not just to ship."
+              />
+              <FeatureCard
+                icon={<Cpu size={24} className="text-[#34D399]" />}
+                title="Impact at Runtime"
+                description="Creating solutions that make a real difference when deployed."
+              />
             </div>
           </div>
         </div>
