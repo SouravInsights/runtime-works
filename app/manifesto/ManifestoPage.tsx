@@ -250,10 +250,11 @@ void main() {
                   The computer lab, that ancient PC with Windows XP. The
                   worn-out keyboard where the spacebar needed an extra push. You
                   typed out your first program - something about{" "}
-                  <Highlight>printf and void main().</Highlight> Your notebook
-                  open beside you, filled with flowcharts and algorithms from
-                  morning lectures. The textbook, borrowed from the library,
-                  propped open to{" "}
+                  <Highlight>printf</Highlight> and{" "}
+                  <Highlight>void main()</Highlight>. Your notebook open beside
+                  you, filled with flowcharts and algorithms from morning
+                  lectures. The textbook, borrowed from the library, propped
+                  open to{" "}
                   <Highlight>Chapter 1: Introduction to Programming.</Highlight>
                 </Text>
 
