@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-heading",
 });
 
 const pressStart2P = Press_Start_2P({

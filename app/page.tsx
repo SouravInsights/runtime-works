@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Code2, GitBranch, Terminal, Cpu } from "lucide-react";
+import Link from "next/link";
 
 interface ProjectCardProps {
   title: string;
@@ -155,7 +156,6 @@ const LandingPage = () => {
       ref={containerRef}
       className="relative min-h-screen bg-black text-white"
     >
-      {/* Custom Cursor */}
       <div
         className="fixed w-8 h-8 pointer-events-none z-50 mix-blend-difference"
         style={{
@@ -222,6 +222,35 @@ const LandingPage = () => {
                 <p className="text-xl md:text-2xl text-gray-400 max-w-2xl">
                   Building software that matters. Where code meets reality.
                 </p>
+
+                {/* Manifesto button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  <Link
+                    href="/manifesto"
+                    className="inline-flex items-center px-6 py-3 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 transition-colors group"
+                  >
+                    <span className="font-heading text-sm">Read our story</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="ml-2 group-hover:translate-x-1 transition-transform"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </Link>
+                </motion.div>
               </div>
 
               <motion.div

@@ -57,7 +57,10 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        pixel: ["var(--font-pixel)", "Courier New", "monospace"],
+        sans: ["var(--font-geist-sans)", "sans-serif"], // Geist Sans
+        mono: ["var(--font-geist-mono)", "monospace"], // Geist Mono
+        serif: ["var(--font-heading)", "serif"], // Crimson Pro
+        pixel: ["var(--font-pixel)", "Courier New", "monospace"], // Press Start 2P
       },
     },
   },
