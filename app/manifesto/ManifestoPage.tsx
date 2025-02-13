@@ -249,11 +249,11 @@ void main() {
                 <Text>
                   The computer lab, that ancient PC with Windows XP. The
                   worn-out keyboard where the spacebar needed an extra push. You
-                  typed out your first program - something about printf and void
-                  main(). Your notebook open beside you, filled with flowcharts
-                  and algorithms from morning lectures. The textbook, borrowed
-                  from the library, propped open to Chapter 1: Introduction to
-                  Programming.
+                  typed out your first program - something about{" "}
+                  <Highlight>printf and void main().</Highlight> Your notebook
+                  open beside you, filled with flowcharts and algorithms from
+                  morning lectures. The textbook, borrowed from the library,
+                  propped open to Chapter 1: Introduction to Programming.
                 </Text>
 
                 <Text>
