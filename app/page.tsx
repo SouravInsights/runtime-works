@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Code2, GitBranch, Terminal, Cpu } from "lucide-react";
+import PixelFooter from "./components/PixelArtFooter";
 
 interface ProjectCardProps {
   title: string;
@@ -94,13 +95,35 @@ const FeatureCard = ({
   </div>
 );
 
-// const GlitchText = ({ children }: { children: React.ReactNode }) => (
-//   <span className="relative">
-//     <span className="absolute -inset-0.5 text-blue-500 animate-glitch-1">
-//       {children}
-//     </span>
-//     <span className="relative">{children}</span>
-//   </span>
+// const PixelBorder = ({
+//   children,
+//   className = "",
+// }: {
+//   children: React.ReactNode;
+//   className?: string;
+// }) => (
+//   <div className={`relative ${className}`}>
+//     {/* Top Border */}
+//     <div className="absolute top-0 left-0 right-0 h-2 bg-blue-500/20">
+//       <div className="absolute top-0 left-0 w-2 h-2 bg-blue-500/40" />
+//       <div className="absolute top-0 right-0 w-2 h-2 bg-blue-500/40" />
+//     </div>
+
+//     {/* Bottom Border */}
+//     <div className="absolute bottom-0 left-0 right-0 h-2 bg-blue-500/20">
+//       <div className="absolute bottom-0 left-0 w-2 h-2 bg-blue-500/40" />
+//       <div className="absolute bottom-0 right-0 w-2 h-2 bg-blue-500/40" />
+//     </div>
+
+//     {/* Left Border */}
+//     <div className="absolute left-0 top-2 bottom-2 w-2 bg-blue-500/20" />
+
+//     {/* Right Border */}
+//     <div className="absolute right-0 top-2 bottom-2 w-2 bg-blue-500/20" />
+
+//     {/* Content */}
+//     <div className="p-2">{children}</div>
+//   </div>
 // );
 
 const LandingPage = () => {
@@ -346,6 +369,8 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+      <PixelFooter />
     </div>
   );
 };
