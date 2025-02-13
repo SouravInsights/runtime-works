@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 
 const PixelMascot = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isWaving, setIsWaving] = useState(false);
+  const [isWinking, setIsWinking] = useState(false);
+
+  // winking effect (only right eye)
+  useEffect(() => {
+    // Wink every 5 seconds
+    const winkInterval = setInterval(() => {
+      setIsWinking(true);
+      // Keep eye closed for 200ms
+      setTimeout(() => setIsWinking(false), 200);
+    }, 5000);
+
+    return () => clearInterval(winkInterval);
+  }, []);
 
   const walkingVariants = {
     walk: {
@@ -129,7 +142,7 @@ const PixelMascot = () => {
           {/* Face - changes on hover */}
           {isHovered ? (
             <>
-              {/* Happy eyes */}
+              {/* Left eye stays normal */}
               <rect
                 x="11"
                 y="14"
@@ -137,11 +150,12 @@ const PixelMascot = () => {
                 height="2"
                 className="fill-blue-300/60"
               />
+              {/* Right eye winks */}
               <rect
                 x="19"
                 y="14"
                 width="2"
-                height="2"
+                height={isWinking ? "1" : "2"}
                 className="fill-blue-300/60"
               />
               {/* Smile */}
@@ -152,7 +166,7 @@ const PixelMascot = () => {
             </>
           ) : (
             <>
-              {/* Normal eyes */}
+              {/* Left eye stays normal */}
               <rect
                 x="11"
                 y="14"
@@ -160,11 +174,12 @@ const PixelMascot = () => {
                 height="2"
                 className="fill-blue-300/40"
               />
+              {/* Right eye winks */}
               <rect
                 x="19"
                 y="14"
                 width="2"
-                height="2"
+                height={isWinking ? "1" : "2"}
                 className="fill-blue-300/40"
               />
               {/* Neutral expression */}
