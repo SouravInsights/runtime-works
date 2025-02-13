@@ -414,8 +414,8 @@ void main() {
                   <li>
                     <Text>
                       We work with clients who value{" "}
-                      <Highlight>thoughtful architecture</Highlight>
-                      over quick fixes.
+                      <Highlight>thoughtful architecture</Highlight> over quick
+                      fixes.
                     </Text>
                   </li>
                   <li>
