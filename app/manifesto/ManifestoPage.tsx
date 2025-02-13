@@ -253,7 +253,8 @@ void main() {
                   <Highlight>printf and void main().</Highlight> Your notebook
                   open beside you, filled with flowcharts and algorithms from
                   morning lectures. The textbook, borrowed from the library,
-                  propped open to Chapter 1: Introduction to Programming.
+                  propped open to{" "}
+                  <Highlight>Chapter 1: Introduction to Programming.</Highlight>
                 </Text>
 
                 <Text>
