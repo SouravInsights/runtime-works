@@ -338,8 +338,6 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-
-      <PixelFooter />
     </div>
   );
 };

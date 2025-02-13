@@ -6,6 +6,7 @@ import {
   Press_Start_2P,
 } from "next/font/google";
 import "./globals.css";
+import PixelFooter from "./components/PixelArtFooter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -68,7 +69,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${crimsonPro.variable} ${pressStart2P.variable} antialiased`}
       >
-        {children}
+        <main>{children}</main>
+        <PixelFooter />
       </body>
     </html>
   );
