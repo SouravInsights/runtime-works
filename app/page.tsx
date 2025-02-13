@@ -94,14 +94,14 @@ const FeatureCard = ({
   </div>
 );
 
-const GlitchText = ({ children }: { children: React.ReactNode }) => (
-  <span className="relative">
-    <span className="absolute -inset-0.5 text-blue-500 animate-glitch-1">
-      {children}
-    </span>
-    <span className="relative">{children}</span>
-  </span>
-);
+// const GlitchText = ({ children }: { children: React.ReactNode }) => (
+//   <span className="relative">
+//     <span className="absolute -inset-0.5 text-blue-500 animate-glitch-1">
+//       {children}
+//     </span>
+//     <span className="relative">{children}</span>
+//   </span>
+// );
 
 const LandingPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -222,14 +222,14 @@ const LandingPage = () => {
               className="space-y-8"
             >
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-7xl font-bold">
+                <h1 className="font-pixel text-2xl md:text-4xl font-bold">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
                     runtime.works
                   </span>
                 </h1>
+
                 <p className="text-xl md:text-2xl text-gray-400 max-w-2xl">
-                  Building <GlitchText>software that matters.</GlitchText> Where
-                  code meets reality.
+                  Building software that matters. Where code meets reality.
                 </p>
               </div>
 
@@ -324,7 +324,7 @@ const LandingPage = () => {
               transition={{ duration: 0.5 }}
               className="text-center space-y-8"
             >
-              <h2 className="text-3xl md:text-4xl font-bold">
+              <h2 className="font-pixel text-xl md:text-4xl font-bold">
                 Let's Build Something
               </h2>
               <p className="text-gray-400 max-w-2xl mx-auto">

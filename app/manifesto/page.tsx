@@ -183,7 +183,7 @@ const ManifestoPage = () => {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="space-y-6"
               >
-                <h2 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                <h2 className="font-pixel text-xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
                   runtime.works
                 </h2>
                 <p className="text-xl md:text-2xl text-gray-300">
