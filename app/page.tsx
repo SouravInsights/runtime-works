@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Code2, GitBranch, Terminal, Cpu } from "lucide-react";
-import PixelFooter from "./components/PixelArtFooter";
 
 interface ProjectCardProps {
   title: string;
