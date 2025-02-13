@@ -94,6 +94,15 @@ const FeatureCard = ({
   </div>
 );
 
+const GlitchText = ({ children }: { children: React.ReactNode }) => (
+  <span className="relative">
+    <span className="absolute -inset-0.5 text-blue-500 animate-glitch-1">
+      {children}
+    </span>
+    <span className="relative">{children}</span>
+  </span>
+);
+
 const LandingPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -219,7 +228,8 @@ const LandingPage = () => {
                   </span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-400 max-w-2xl">
-                  Building software that matters. Where code meets reality.
+                  Building <GlitchText>software that matters.</GlitchText> Where
+                  code meets reality.
                 </p>
               </div>
 
