@@ -220,7 +220,7 @@ const LandingPage = () => {
                 </h1>
 
                 <p className="text-xl md:text-2xl text-gray-400 max-w-2xl">
-                  Building software that matters. Where code meets reality.
+                  Building software that matters.
                 </p>
 
                 {/* Manifesto button */}
