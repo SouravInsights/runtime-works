@@ -333,6 +333,8 @@ const LandingPage = () => {
         </div>
       </section>
 
+      <WhyWorkWithUs />
+
       {/* Contact Section */}
       <section className="relative py-24 overflow-hidden">
         <div className="container mx-auto px-6">
@@ -371,3 +373,138 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+
+const WhyWorkWithUs = () => {
+  const [designerRate, setDesignerRate] = useState(120);
+  const [frontendRate, setFrontendRate] = useState(150);
+  const [backendRate, setBackendRate] = useState(160);
+
+  return (
+    <section className="relative py-24 overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header */}
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Why Work With Us
+            </h2>
+            <p className="text-gray-400">Let's run some calculations...</p>
+          </div>
+
+          {/* Cost Calculator Terminal */}
+          <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] overflow-hidden">
+            {/* Terminal Header */}
+            <div className="absolute top-0 left-0 right-0 h-8 bg-black/40 border-b border-white/[0.08] flex items-center px-4 gap-2">
+              <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+              <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
+              <div className="w-3 h-3 rounded-full bg-[#28C840]" />
+            </div>
+
+            {/* Terminal Content */}
+            <div className="pt-12 p-6 font-mono text-sm space-y-4">
+              <div className="text-gray-400">
+                <span className="text-green-500">$</span> calculate-cost
+                traditional-way
+              </div>
+
+              <div className="pl-4 space-y-2">
+                <div className="flex items-center gap-4">
+                  <span className="text-blue-400">Designer</span>
+                  <input
+                    type="number"
+                    value={designerRate}
+                    onChange={(e) => setDesignerRate(Number(e.target.value))}
+                    className="bg-blue-500/10 border border-blue-500/20 rounded px-2 py-1 w-24"
+                  />
+                  <span className="text-gray-500">per hour</span>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <span className="text-purple-400">Frontend</span>
+                  <input
+                    type="number"
+                    value={frontendRate}
+                    onChange={(e) => setFrontendRate(Number(e.target.value))}
+                    className="bg-blue-500/10 border border-blue-500/20 rounded px-2 py-1 w-24"
+                  />
+                  <span className="text-gray-500">per hour</span>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <span className="text-green-400">Backend</span>
+                  <input
+                    type="number"
+                    value={backendRate}
+                    onChange={(e) => setBackendRate(Number(e.target.value))}
+                    className="bg-blue-500/10 border border-blue-500/20 rounded px-2 py-1 w-24"
+                  />
+                  <span className="text-gray-500">per hour</span>
+                </div>
+
+                <div className="mt-4 text-gray-400">
+                  Calculating for 3 months...
+                </div>
+
+                <div className="text-xl">
+                  Total:{" "}
+                  <span className="text-blue-400">
+                    $
+                    {(
+                      (designerRate + frontendRate + backendRate) *
+                      480
+                    ).toLocaleString()}
+                  </span>
+                </div>
+              </div>
+
+              <div className="text-gray-400 mt-8">
+                <span className="text-green-500">$</span> calculate-cost
+                runtime-works
+              </div>
+
+              <div className="pl-4">
+                <div className="text-xl">
+                  Total:{" "}
+                  <span className="text-blue-400">
+                    ${(350 * 480).toLocaleString()}
+                  </span>
+                </div>
+                <div className="text-green-400 mt-2">
+                  40% more efficient & cohesive
+                </div>
+              </div>
+
+              <div className="border-t border-white/10 mt-8 pt-8 text-gray-400">
+                <span className="text-green-500">$</span> echo "But here's why
+                you should really work with us..."
+              </div>
+            </div>
+          </div>
+
+          {/* Real Reasons */}
+          <div className="mt-16 font-mono space-y-6 text-gray-400">
+            <div className="flex items-start gap-4">
+              <span className="text-blue-400">01</span>
+              <p>
+                We think deeply about architecture and scalability from day one.
+              </p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-blue-400">02</span>
+              <p>
+                Your product gets our full, undivided attention - no context
+                switching between clients.
+              </p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-blue-400">03</span>
+              <p>
+                We're builders who care about craft, not just shipping features.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
