@@ -335,6 +335,10 @@ const LandingPage = () => {
 
       <WhyWorkWithUs />
 
+      <WhyWorkWithUs3 />
+
+      <WhyWorkWithUs2 />
+
       {/* Contact Section */}
       <section className="relative py-24 overflow-hidden">
         <div className="container mx-auto px-6">
@@ -501,6 +505,361 @@ const WhyWorkWithUs = () => {
               <p>
                 We're builders who care about craft, not just shipping features.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const WhyWorkWithUs3 = () => {
+  const [rates, setRates] = useState({
+    designer: 120,
+    frontend: 150,
+    backend: 160,
+  });
+
+  const HOURS = 480; // 3 months
+  const RUNTIME_RATE = 350;
+
+  const calculateTraditional = () => {
+    return (rates.designer + rates.frontend + rates.backend) * HOURS;
+  };
+
+  const calculateRuntime = () => RUNTIME_RATE * HOURS;
+  // const calculateSavings = () => calculateTraditional() - calculateRuntime();
+
+  const RateInput = ({
+    label,
+    value,
+    onChange,
+    colorClass,
+  }: {
+    label: string;
+    value: number;
+    onChange: (value: number) => void;
+    colorClass: string;
+  }) => (
+    <div className="grid grid-cols-[1fr,120px,100px] items-center gap-4">
+      <div className={`text-sm ${colorClass}`}>{label}</div>
+      <div className="relative">
+        <input
+          type="number"
+          value={value}
+          onChange={(e) => {
+            const newValue = e.target.value === "" ? 0 : Number(e.target.value);
+            onChange(newValue);
+          }}
+          className={`w-full bg-white/5 border border-white/10 rounded px-6 py-1.5
+                     font-mono text-white text-sm focus:outline-none focus:border-white/20`}
+        />
+        <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500 text-sm">
+          $
+        </span>
+        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 text-xs">
+          /hr
+        </span>
+      </div>
+      <div className="text-sm text-gray-500">
+        = ${(value * HOURS).toLocaleString()}
+      </div>
+    </div>
+  );
+
+  return (
+    <section className="relative py-24 overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Why Work With Us
+            </h2>
+            <p className="text-gray-400">Let's run some calculations...</p>
+          </div>
+
+          <div className="relative bg-black/40 backdrop-blur-sm rounded-lg p-8 border border-white/10">
+            {/* Rate Inputs */}
+            <div className="space-y-4 mb-8">
+              <RateInput
+                label="Product Designer"
+                value={rates.designer}
+                onChange={(value) =>
+                  setRates((prev) => ({ ...prev, designer: value }))
+                }
+                colorClass="text-purple-400"
+              />
+              <RateInput
+                label="Frontend Engineer"
+                value={rates.frontend}
+                onChange={(value) =>
+                  setRates((prev) => ({ ...prev, frontend: value }))
+                }
+                colorClass="text-blue-400"
+              />
+              <RateInput
+                label="Backend Engineer"
+                value={rates.backend}
+                onChange={(value) =>
+                  setRates((prev) => ({ ...prev, backend: value }))
+                }
+                colorClass="text-green-400"
+              />
+            </div>
+
+            {/* Results */}
+            <div className="flex items-center justify-between pt-6 border-t border-white/10">
+              <div>
+                <div className="text-sm text-gray-500 mb-1">Traditional</div>
+                <div className="text-xl font-mono text-white">
+                  ${calculateTraditional().toLocaleString()}
+                </div>
+              </div>
+
+              <div className="text-center px-4">
+                <div className="text-sm font-pixel text-gray-500">VS</div>
+              </div>
+
+              <div className="text-right">
+                <div className="text-sm text-gray-500 mb-1">runtime.works</div>
+                <div className="text-xl font-mono text-white">
+                  ${calculateRuntime().toLocaleString()}
+                </div>
+                <div className="text-xs text-gray-500">
+                  ${RUNTIME_RATE}/hr × {HOURS}hrs
+                </div>
+              </div>
+            </div>
+
+            {/* Savings */}
+            <div className="mt-6 text-center">
+              <div className="inline-block bg-green-500/10 px-4 py-2 rounded-full">
+                {/* <div className="text-sm text-green-400">You save</div>
+                <div className="text-lg font-mono text-green-400">
+                  ${calculateSavings().toLocaleString()}
+                </div> */}
+
+                <div className="text-md font-mono text-green-400">
+                  40% more efficient & cohesive
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-5xl mx-auto">
+          <div className="mt-24 mb-16 text-center">
+            <p className="text-sm text-gray-500 font-pixel">
+              But the real value goes beyond the numbers...
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                <span className="text-blue-400 font-pixel">01</span>
+              </div>
+              <h3 className="text-lg text-gray-300">Deep Focus</h3>
+              <p className="text-gray-400">
+                Your product gets our full, undivided attention - no context
+                switching between multiple clients.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                <span className="text-blue-400 font-pixel">02</span>
+              </div>
+              <h3 className="text-lg text-gray-300">Think First</h3>
+              <p className="text-gray-400">
+                We take time to understand problems deeply before jumping into
+                solutions.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                <span className="text-blue-400 font-pixel">03</span>
+              </div>
+              <h3 className="text-lg text-gray-300">Built to Grow</h3>
+              <p className="text-gray-400">
+                We build systems that can evolve with your needs, not quick
+                fixes that need constant rewrites.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const WhyWorkWithUs2 = () => {
+  const [activeComparison, setActiveComparison] = useState<
+    "traditional" | "runtime" | null
+  >(null);
+
+  return (
+    <section className="relative py-24 overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Why Work With Us
+            </h2>
+            <p className="text-gray-400">Let's do a quick comparison...</p>
+          </div>
+
+          {/* Timeline Comparison */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Traditional Path */}
+            <div
+              className={`relative min-h-[400px] p-6 transition-colors duration-300 rounded-lg
+      ${
+        activeComparison === "traditional"
+          ? "bg-white/[0.05] border border-white/[0.2]"
+          : "bg-white/[0.02] border border-white/[0.08]"
+      }
+    `}
+              onMouseEnter={() => setActiveComparison("traditional")}
+              onMouseLeave={() => setActiveComparison(null)}
+            >
+              <div>
+                <h3 className="font-pixel text-sm text-gray-400 mb-6">
+                  Traditional Way
+                </h3>
+
+                <div className="space-y-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
+                      <span className="font-mono text-purple-400">1w</span>
+                    </div>
+                    <div>
+                      <div className="text-gray-300">Find & Hire Team</div>
+                      <div className="text-sm text-gray-500">
+                        3 different hiring processes
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                      <span className="font-mono text-blue-400">2w</span>
+                    </div>
+                    <div>
+                      <div className="text-gray-300">Team Alignment</div>
+                      <div className="text-sm text-gray-500">
+                        Multiple meetings & setups
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
+                      <span className="font-mono text-red-400">4w</span>
+                    </div>
+                    <div>
+                      <div className="text-gray-300">Start Building</div>
+                      <div className="text-sm text-gray-500">
+                        High coordination overhead
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer - positioned at bottom */}
+              <div className="absolute bottom-6 left-6 right-6 pt-8 border-t border-white/10">
+                <div className="flex items-baseline justify-between">
+                  <div className="text-sm text-gray-500">
+                    Total Time to Value
+                  </div>
+                  <div className="font-mono text-xl text-gray-300">7 weeks</div>
+                </div>
+              </div>
+            </div>
+
+            {/* runtime.works Path */}
+            <div
+              className={`relative min-h-[400px] p-6 transition-colors duration-300 rounded-lg
+      ${
+        activeComparison === "runtime"
+          ? "bg-blue-500/10 border border-blue-500/30"
+          : "bg-blue-500/5 border border-blue-500/20"
+      }
+    `}
+              onMouseEnter={() => setActiveComparison("runtime")}
+              onMouseLeave={() => setActiveComparison(null)}
+            >
+              <div>
+                <h3 className="font-pixel text-sm text-blue-400 mb-6">
+                  runtime.works Way
+                </h3>
+
+                <div className="space-y-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                      <span className="font-mono text-blue-400">1d</span>
+                    </div>
+                    <div>
+                      <div className="text-gray-300">Quick Chat</div>
+                      <div className="text-sm text-gray-500">
+                        Understand your needs
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                      <span className="font-mono text-blue-400">2d</span>
+                    </div>
+                    <div>
+                      <div className="text-gray-300">Start Building</div>
+                      <div className="text-sm text-gray-500">
+                        All in one team
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer - positioned at bottom */}
+              <div className="absolute bottom-6 left-6 right-6 pt-8 border-t border-white/10">
+                <div className="flex items-baseline justify-between">
+                  <div className="text-sm text-gray-500">
+                    Total Time to Value
+                  </div>
+                  <div className="font-mono text-xl text-blue-400">3 days</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* "Real Reasons" section */}
+          <div className="mt-24 text-center">
+            <p className="text-sm text-gray-500 font-pixel mb-16">
+              But here's why you should really work with us...
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {["Deep Understanding", "Quality First", "Full Ownership"].map(
+                (reason, i) => (
+                  <div key={i} className="text-left">
+                    <div className="text-blue-400 font-pixel mb-2">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <h3 className="text-gray-300 mb-2">{reason}</h3>
+                    <p className="text-sm text-gray-500">
+                      {i === 0 &&
+                        "We take time to understand your business and users deeply."}
+                      {i === 1 &&
+                        "We believe in doing things right the first time."}
+                      {i === 2 &&
+                        "We treat your product like our own, thinking long-term."}
+                    </p>
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>
