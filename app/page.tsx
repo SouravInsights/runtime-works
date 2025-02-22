@@ -2,7 +2,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Code2, GitBranch, Terminal, Cpu } from "lucide-react";
+import { GitBranch, Terminal } from "lucide-react";
 import Link from "next/link";
 
 interface ProjectCardProps {
@@ -57,43 +57,43 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   </motion.div>
 );
 
-const CodeBlock = ({ children }: { children: React.ReactNode }) => (
-  <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] overflow-hidden">
-    {/* Terminal dots */}
-    <div className="absolute top-0 left-0 right-0 h-8 bg-black/40 border-b border-white/[0.08] flex items-center px-4 gap-2">
-      <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
-      <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
-      <div className="w-3 h-3 rounded-full bg-[#28C840]" />
-    </div>
+// const CodeBlock = ({ children }: { children: React.ReactNode }) => (
+//   <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] overflow-hidden">
+//     {/* Terminal dots */}
+//     <div className="absolute top-0 left-0 right-0 h-8 bg-black/40 border-b border-white/[0.08] flex items-center px-4 gap-2">
+//       <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+//       <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
+//       <div className="w-3 h-3 rounded-full bg-[#28C840]" />
+//     </div>
 
-    {/* Code content */}
-    <div className="pt-12 p-6 font-mono text-sm">{children}</div>
-  </div>
-);
+//     {/* Code content */}
+//     <div className="pt-12 p-6 font-mono text-sm">{children}</div>
+//   </div>
+// );
 
-const FeatureCard = ({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) => (
-  <div className="relative group">
-    {/* Gradient background */}
-    <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+// const FeatureCard = ({
+//   icon,
+//   title,
+//   description,
+// }: {
+//   icon: React.ReactNode;
+//   title: string;
+//   description: string;
+// }) => (
+//   <div className="relative group">
+//     {/* Gradient background */}
+//     <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-    {/* Content */}
-    <div className="relative bg-white/[0.02] backdrop-blur-sm border border-white/[0.08] rounded-lg p-6 h-full">
-      <div className="flex flex-col items-center text-center space-y-4">
-        {icon}
-        <h3 className="text-lg font-medium text-white">{title}</h3>
-        <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
-      </div>
-    </div>
-  </div>
-);
+//     {/* Content */}
+//     <div className="relative bg-white/[0.02] backdrop-blur-sm border border-white/[0.08] rounded-lg p-6 h-full">
+//       <div className="flex flex-col items-center text-center space-y-4">
+//         {icon}
+//         <h3 className="text-lg font-medium text-white">{title}</h3>
+//         <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+//       </div>
+//     </div>
+//   </div>
+// );
 
 const LandingPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -252,54 +252,85 @@ const LandingPage = () => {
                   </Link>
                 </motion.div>
               </div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <CodeBlock>
-                  <div className="text-gray-400">Our approach is simple</div>
-                  <div className="mt-4">
-                    <span className="text-[#60A5FA]">const</span>{" "}
-                    <span className="text-[#A78BFA]">approach</span> = {"{"}
-                  </div>
-                  <div className="pl-8 space-y-1">
-                    <div>
-                      thoughtfulArchitecture:{" "}
-                      <span className="text-[#34D399]">true</span>,
-                    </div>
-                    <div>
-                      deepUnderstanding:{" "}
-                      <span className="text-[#34D399]">true</span>,
-                    </div>
-                    <div>
-                      quickFixes: <span className="text-[#EF4444]">false</span>
-                    </div>
-                  </div>
-                  <div>{"}"}</div>
-                </CodeBlock>
-              </motion.div>
             </motion.div>
 
-            {/* Feature Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <FeatureCard
-                icon={<Terminal size={24} className="text-[#60A5FA]" />}
-                title="Deep Understanding"
-                description="We take time to understand the problem space before writing a single line of code."
-              />
-              <FeatureCard
-                icon={<Code2 size={24} className="text-[#A78BFA]" />}
-                title="Thoughtful Architecture"
-                description="Building software that's meant to last, not just to ship."
-              />
-              <FeatureCard
-                icon={<Cpu size={24} className="text-[#34D399]" />}
-                title="Impact at Runtime"
-                description="Creating solutions that make a real difference when deployed."
-              />
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] p-8">
+                <h3 className="text-xl font-semibold text-gray-100 mb-6">
+                  Our Process
+                </h3>
+                <div className="space-y-8">
+                  {/* Step 1 */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                      <span className="text-blue-400 font-pixel">01</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-gray-100">
+                        Discovery
+                      </h4>
+                      <p className="text-gray-400 text-sm">
+                        We dive deep into your business goals, challenges, and
+                        user needs to craft a tailored solution.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
+                      <span className="text-purple-400 font-pixel">02</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-gray-100">
+                        Design & Prototyping
+                      </h4>
+                      <p className="text-gray-400 text-sm">
+                        We create intuitive designs and interactive prototypes
+                        to ensure the solution aligns with your vision.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
+                      <span className="text-green-400 font-pixel">03</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-gray-100">
+                        Development
+                      </h4>
+                      <p className="text-gray-400 text-sm">
+                        Using cutting-edge technologies, we build scalable and
+                        maintainable systems.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 4 */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center">
+                      <span className="text-yellow-400 font-pixel">04</span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-gray-100">
+                        Launch & Iterate
+                      </h4>
+                      <p className="text-gray-400 text-sm">
+                        We deploy your product and continuously refine it based
+                        on real-world feedback.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
