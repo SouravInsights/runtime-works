@@ -440,13 +440,13 @@ const WhyWorkWithUs = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Why Work With Us
             </h2>
-            <p className="text-gray-400">Let's run some calculations...</p>
+            <p className="text-gray-400">Let's do a quick comparison...</p>
           </div>
           {/* Timeline Comparison */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Traditional Path */}
             <div
-              className={`relative min-h-[400px] p-6 transition-colors duration-300 rounded-lg
+              className={`relative min-h-[400px] p-6 transition-colors duration-300 rounded-lg backdrop-blur-lg
       ${
         activeComparison === "traditional"
           ? "bg-white/[0.05] border border-white/[0.2]"
@@ -510,10 +510,9 @@ const WhyWorkWithUs = () => {
                 </div>
               </div>
             </div>
-
             {/* runtime.works Path */}
             <div
-              className={`relative min-h-[400px] p-6 transition-colors duration-300 rounded-lg
+              className={`relative min-h-[400px] p-6 transition-colors duration-300 rounded-lg backdrop-blur-lg
       ${
         activeComparison === "runtime"
           ? "bg-blue-500/10 border border-blue-500/30"
