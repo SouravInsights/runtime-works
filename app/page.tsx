@@ -260,13 +260,13 @@ const LandingPage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] p-8">
+              <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] p-6 md:p-8">
                 <h3 className="text-xl font-semibold text-gray-100 mb-6">
                   Our Process
                 </h3>
-                <div className="space-y-8">
+                <div className="space-y-6 md:space-y-8">
                   {/* Step 1 */}
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
                       <span className="text-blue-400 font-pixel">01</span>
                     </div>
@@ -282,7 +282,7 @@ const LandingPage = () => {
                   </div>
 
                   {/* Step 2 */}
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
                       <span className="text-purple-400 font-pixel">02</span>
                     </div>
@@ -298,7 +298,7 @@ const LandingPage = () => {
                   </div>
 
                   {/* Step 3 */}
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
                       <span className="text-green-400 font-pixel">03</span>
                     </div>
@@ -314,7 +314,7 @@ const LandingPage = () => {
                   </div>
 
                   {/* Step 4 */}
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center">
                       <span className="text-yellow-400 font-pixel">04</span>
                     </div>
