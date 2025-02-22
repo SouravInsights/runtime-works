@@ -629,7 +629,7 @@ const WhyWorkWithUs = () => {
                 </div> */}
 
                 <div className="text-md font-mono text-green-400">
-                  40% more efficient & cohesive
+                  40% <span className="text-sm">more efficient & cohesive</span>
                 </div>
               </div>
             </div>
