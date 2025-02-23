@@ -62,44 +62,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   </motion.div>
 );
 
-// const CodeBlock = ({ children }: { children: React.ReactNode }) => (
-//   <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] overflow-hidden">
-//     {/* Terminal dots */}
-//     <div className="absolute top-0 left-0 right-0 h-8 bg-black/40 border-b border-white/[0.08] flex items-center px-4 gap-2">
-//       <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
-//       <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
-//       <div className="w-3 h-3 rounded-full bg-[#28C840]" />
-//     </div>
-
-//     {/* Code content */}
-//     <div className="pt-12 p-6 font-mono text-sm">{children}</div>
-//   </div>
-// );
-
-// const FeatureCard = ({
-//   icon,
-//   title,
-//   description,
-// }: {
-//   icon: React.ReactNode;
-//   title: string;
-//   description: string;
-// }) => (
-//   <div className="relative group">
-//     {/* Gradient background */}
-//     <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-//     {/* Content */}
-//     <div className="relative bg-white/[0.02] backdrop-blur-sm border border-white/[0.08] rounded-lg p-6 h-full">
-//       <div className="flex flex-col items-center text-center space-y-4">
-//         {icon}
-//         <h3 className="text-lg font-medium text-white">{title}</h3>
-//         <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
-//       </div>
-//     </div>
-//   </div>
-// );
-
 const LandingPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -172,6 +134,7 @@ const LandingPage = () => {
       />
 
       {/* Background Grid */}
+      {/* Background Abstract Blobs */}
       <div className="fixed inset-0 bg-[#040407]">
         <motion.div
           className="absolute inset-0 opacity-[0.1]"
@@ -180,22 +143,8 @@ const LandingPage = () => {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `
-                linear-gradient(to right, #8B8B8B 1px, transparent 1px),
-                linear-gradient(to bottom, #8B8B8B 1px, transparent 1px)
-              `,
-              backgroundSize: "80px 80px",
-            }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-                linear-gradient(to right, #8B8B8B 1px, transparent 1px),
-                linear-gradient(to bottom, #8B8B8B 1px, transparent 1px)
-              `,
-              backgroundSize: "20px 20px",
-              opacity: 0.5,
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cg fill='%235b8bf7' fill-opacity='0.1'%3E%3Ccircle cx='400' cy='400' r='600'/%3E%3Ccircle cx='400' cy='400' r='500'/%3E%3Ccircle cx='400' cy='400' r='400'/%3E%3Ccircle cx='400' cy='400' r='300'/%3E%3Ccircle cx='400' cy='400' r='200'/%3E%3Ccircle cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: "cover",
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#040407] via-transparent to-transparent" />
