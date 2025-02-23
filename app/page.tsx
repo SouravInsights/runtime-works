@@ -1,8 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { GitBranch, Terminal } from "lucide-react";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { Clock, GitBranch, Terminal, DollarSign } from "lucide-react";
 import Link from "next/link";
 
 interface ProjectCardProps {
@@ -409,57 +414,41 @@ const WhyWorkWithUs = () => {
   const [activeComparison, setActiveComparison] = useState<
     "traditional" | "runtime" | null
   >(null);
-
+  const [activeView, setActiveView] = useState<"time" | "cost">("time");
   const [rates, setRates] = useState({
     designer: 120,
     frontend: 150,
     backend: 160,
   });
 
-  const HOURS = 480; // 3 months
-  const RUNTIME_RATE = 350;
-
-  const calculateTraditional = () => {
-    return (rates.designer + rates.frontend + rates.backend) * HOURS;
+  // Calculate costs for a month (160 hours)
+  const calculateTraditionalCost = () => {
+    return (rates.designer + rates.frontend + rates.backend) * 160;
   };
 
-  const calculateRuntime = () => RUNTIME_RATE * HOURS;
-  // const calculateSavings = () => calculateTraditional() - calculateRuntime();
+  const calculateRuntimeCost = () => {
+    return 350 * 160; // Our team rate
+  };
 
+  // Animated input component
   const RateInput = ({
-    label,
     value,
     onChange,
-    colorClass,
+    color = "blue",
   }: {
-    label: string;
     value: number;
     onChange: (value: number) => void;
-    colorClass: string;
+    color?: string;
   }) => (
-    <div className="grid grid-cols-[1fr,120px,100px] items-center gap-4">
-      <div className={`text-sm ${colorClass}`}>{label}</div>
-      <div className="relative">
-        <input
-          type="number"
-          value={value}
-          onChange={(e) => {
-            const newValue = e.target.value === "" ? 0 : Number(e.target.value);
-            onChange(newValue);
-          }}
-          className={`w-full bg-white/5 border border-white/10 rounded px-6 py-1.5
-                     font-mono text-white text-sm focus:outline-none focus:border-white/20`}
-        />
-        <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500 text-sm">
-          $
-        </span>
-        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 text-xs">
-          /hr
-        </span>
-      </div>
-      <div className="text-sm text-gray-500">
-        = ${(value * HOURS).toLocaleString()}
-      </div>
+    <div className="relative group">
+      <input
+        type="number"
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className={`w-24 bg-${color}-500/10 border border-${color}-500/20 rounded 
+                   px-2 py-1 text-${color}-400 focus:outline-none focus:border-${color}-500/40`}
+      />
+      <span className="text-sm text-gray-500 ml-2">/hr</span>
     </div>
   );
 
@@ -467,244 +456,317 @@ const WhyWorkWithUs = () => {
     <section className="relative py-24 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why Work With Us
-            </h2>
-            <p className="text-gray-400">Let's do a quick comparison...</p>
+          <h2 className="font-pixel text-2xl md:text-4xl mb-8">
+            Why Work With Us
+          </h2>
+
+          {/* View Toggle */}
+          <div className="flex gap-4 mb-8">
+            {[
+              { id: "time", icon: Clock },
+              { id: "cost", icon: DollarSign },
+            ].map(({ id, icon: Icon }) => (
+              <button
+                key={id}
+                onClick={() => setActiveView(id as "time" | "cost")}
+                className={`px-4 py-2 font-pixel text-sm rounded-lg transition-colors flex items-center gap-2
+                  ${
+                    activeView === id
+                      ? "bg-blue-500/20 border border-blue-500/40 text-blue-400"
+                      : "bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10"
+                  }`}
+              >
+                <Icon size={14} />
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </button>
+            ))}
           </div>
-          {/* Timeline Comparison */}
+
+          {/* Comparison Cards */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Traditional Path */}
             <div
-              className={`relative min-h-[400px] p-6 transition-colors duration-300 rounded-lg backdrop-blur-lg
-      ${
-        activeComparison === "traditional"
-          ? "bg-white/[0.05] border border-white/[0.2]"
-          : "bg-white/[0.02] border border-white/[0.08]"
-      }
-    `}
+              className={`relative min-h-[440px] p-6 transition-colors duration-300 rounded-lg
+                ${
+                  activeComparison === "traditional"
+                    ? "bg-white/[0.05] border border-white/[0.2]"
+                    : "bg-white/[0.02] border border-white/[0.08]"
+                }`}
               onMouseEnter={() => setActiveComparison("traditional")}
               onMouseLeave={() => setActiveComparison(null)}
             >
-              <div>
+              <div className="pb-24">
                 <h3 className="font-pixel text-sm text-gray-400 mb-6">
                   Traditional Way
                 </h3>
 
-                <div className="space-y-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                      <span className="font-mono text-purple-400">1w</span>
-                    </div>
-                    <div>
-                      <div className="text-gray-300">Find & Hire Team</div>
-                      <div className="text-sm text-gray-500">
-                        3 different hiring processes
-                      </div>
-                    </div>
-                  </div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeView}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {activeView === "time" ? (
+                      <div className="space-y-8">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-purple-400">
+                              1w
+                            </span>
+                          </div>
+                          <div>
+                            <div className="text-gray-300">
+                              Find & Hire Team
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              3 different hiring processes
+                            </div>
+                          </div>
+                        </div>
 
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                      <span className="font-mono text-blue-400">2w</span>
-                    </div>
-                    <div>
-                      <div className="text-gray-300">Team Alignment</div>
-                      <div className="text-sm text-gray-500">
-                        Multiple meetings & setups
-                      </div>
-                    </div>
-                  </div>
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-blue-400">2w</span>
+                          </div>
+                          <div>
+                            <div className="text-gray-300">Team Alignment</div>
+                            <div className="text-sm text-gray-500">
+                              Multiple meetings & setups
+                            </div>
+                          </div>
+                        </div>
 
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
-                      <span className="font-mono text-red-400">4w</span>
-                    </div>
-                    <div>
-                      <div className="text-gray-300">Start Building</div>
-                      <div className="text-sm text-gray-500">
-                        High coordination overhead
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-red-400">4w</span>
+                          </div>
+                          <div>
+                            <div className="text-gray-300">Start Building</div>
+                            <div className="text-sm text-gray-500">
+                              High coordination overhead
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
+                    ) : (
+                      <div className="space-y-8">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-purple-400">$</span>
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-gray-300 mb-2">Designer</div>
+                            <RateInput
+                              value={rates.designer}
+                              onChange={(value) =>
+                                setRates((prev) => ({
+                                  ...prev,
+                                  designer: value,
+                                }))
+                              }
+                              color="purple"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-blue-400">$</span>
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-gray-300 mb-2">
+                              Frontend Developer
+                            </div>
+                            <RateInput
+                              value={rates.frontend}
+                              onChange={(value) =>
+                                setRates((prev) => ({
+                                  ...prev,
+                                  frontend: value,
+                                }))
+                              }
+                              color="blue"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-green-400">$</span>
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-gray-300 mb-2">
+                              Backend Developer
+                            </div>
+                            <RateInput
+                              value={rates.backend}
+                              onChange={(value) =>
+                                setRates((prev) => ({
+                                  ...prev,
+                                  backend: value,
+                                }))
+                              }
+                              color="green"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
-              {/* Footer - positioned at bottom */}
+              {/* Footer */}
               <div className="absolute bottom-6 left-6 right-6 pt-8 border-t border-white/10">
                 <div className="flex items-baseline justify-between">
                   <div className="text-sm text-gray-500">
-                    Total Time to Value
+                    {activeView === "time" ? "Time to Value" : "Monthly Cost"}
                   </div>
-                  <div className="font-mono text-xl text-gray-300">7 weeks</div>
+                  <div className="font-mono text-xl text-gray-300">
+                    {activeView === "time"
+                      ? "7 weeks"
+                      : `$${calculateTraditionalCost().toLocaleString()}`}
+                  </div>
                 </div>
               </div>
             </div>
+
             {/* runtime.works Path */}
             <div
-              className={`relative min-h-[400px] p-6 transition-colors duration-300 rounded-lg backdrop-blur-lg
-      ${
-        activeComparison === "runtime"
-          ? "bg-blue-500/10 border border-blue-500/30"
-          : "bg-blue-500/5 border border-blue-500/20"
-      }
-    `}
+              className={`relative min-h-[500px] p-6 transition-colors duration-300 rounded-lg
+                ${
+                  activeComparison === "runtime"
+                    ? "bg-blue-500/10 border border-blue-500/30"
+                    : "bg-blue-500/5 border border-blue-500/20"
+                }`}
               onMouseEnter={() => setActiveComparison("runtime")}
               onMouseLeave={() => setActiveComparison(null)}
             >
-              <div>
+              <div className="pb-24">
                 <h3 className="font-pixel text-sm text-blue-400 mb-6">
                   runtime.works Way
                 </h3>
 
-                <div className="space-y-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                      <span className="font-mono text-blue-400">1d</span>
-                    </div>
-                    <div>
-                      <div className="text-gray-300">Quick Chat</div>
-                      <div className="text-sm text-gray-500">
-                        Understand your needs
-                      </div>
-                    </div>
-                  </div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeView}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {activeView === "time" ? (
+                      <div className="space-y-8">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-blue-400">1d</span>
+                          </div>
+                          <div>
+                            <div className="text-gray-300">Quick Chat</div>
+                            <div className="text-sm text-gray-500">
+                              Understand your needs
+                            </div>
+                          </div>
+                        </div>
 
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                      <span className="font-mono text-blue-400">2d</span>
-                    </div>
-                    <div>
-                      <div className="text-gray-300">Start Building</div>
-                      <div className="text-sm text-gray-500">
-                        All in one team
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-blue-400">2d</span>
+                          </div>
+                          <div>
+                            <div className="text-gray-300">Start Building</div>
+                            <div className="text-sm text-gray-500">
+                              All in one team
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
+                    ) : (
+                      <div className="space-y-8">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-blue-400">$</span>
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-gray-300 mb-2">
+                              Full-Stack Team
+                            </div>
+                            <div className="font-mono text-blue-400">
+                              $350/hr
+                            </div>
+                            <div className="text-sm text-gray-500 mt-1">
+                              Everything included
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
-              {/* Footer - positioned at bottom */}
+              {/* Footer */}
               <div className="absolute bottom-6 left-6 right-6 pt-8 border-t border-white/10">
                 <div className="flex items-baseline justify-between">
                   <div className="text-sm text-gray-500">
-                    Total Time to Value
+                    {activeView === "time" ? "Time to Value" : "Monthly Cost"}
                   </div>
-                  <div className="font-mono text-xl text-blue-400">3 days</div>
+                  <div className="font-mono text-xl text-blue-400">
+                    {activeView === "time"
+                      ? "3 days"
+                      : `$${calculateRuntimeCost().toLocaleString()}`}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-16 relative bg-black/40 backdrop-blur-sm rounded-lg p-8 border border-white/10">
-            {/* Rate Inputs */}
-            <div className="space-y-4 mb-8">
-              <RateInput
-                label="Product Designer"
-                value={rates.designer}
-                onChange={(value) =>
-                  setRates((prev) => ({ ...prev, designer: value }))
-                }
-                colorClass="text-purple-400"
-              />
-              <RateInput
-                label="Frontend Engineer"
-                value={rates.frontend}
-                onChange={(value) =>
-                  setRates((prev) => ({ ...prev, frontend: value }))
-                }
-                colorClass="text-blue-400"
-              />
-              <RateInput
-                label="Backend Engineer"
-                value={rates.backend}
-                onChange={(value) =>
-                  setRates((prev) => ({ ...prev, backend: value }))
-                }
-                colorClass="text-green-400"
-              />
-            </div>
-
-            {/* Results */}
-            <div className="flex items-center justify-between pt-6 border-t border-white/10">
-              <div>
-                <div className="text-sm text-gray-500 mb-1">Traditional</div>
-                <div className="text-xl font-mono text-white">
-                  ${calculateTraditional().toLocaleString()}
-                </div>
+          {/* Savings Calculation */}
+          {activeView === "cost" && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-8 text-center"
+            >
+              <div className="text-gray-400">
+                Estimated monthly savings:{" "}
+                <span className="text-blue-400 font-mono">
+                  $
+                  {(
+                    calculateTraditionalCost() - calculateRuntimeCost()
+                  ).toLocaleString()}
+                </span>
               </div>
+            </motion.div>
+          )}
 
-              <div className="text-center px-4">
-                <div className="text-sm font-pixel text-gray-500">VS</div>
-              </div>
-
-              <div className="text-right">
-                <div className="text-sm text-gray-500 mb-1">runtime.works</div>
-                <div className="text-xl font-mono text-white">
-                  ${calculateRuntime().toLocaleString()}
-                </div>
-                <div className="text-xs text-gray-500">
-                  ${RUNTIME_RATE}/hr × {HOURS}hrs
-                </div>
-              </div>
-            </div>
-
-            {/* Savings */}
-            <div className="mt-6 text-center">
-              <div className="inline-block bg-green-500/10 px-4 py-2 rounded-full">
-                {/* <div className="text-sm text-green-400">You save</div>
-                <div className="text-lg font-mono text-green-400">
-                  ${calculateSavings().toLocaleString()}
-                </div> */}
-
-                <div className="text-md font-mono text-green-400">
-                  40% <span className="text-sm">more efficient</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-5xl mx-auto">
-          <div className="mt-24 mb-16 text-center">
-            <p className="text-sm text-gray-500 font-pixel">
-              But the real value goes beyond the numbers...
+          {/* "Real Reasons" section */}
+          <div className="mt-24 text-center">
+            <p className="text-sm text-gray-500 font-pixel mb-16">
+              But here's why you should really work with us...
             </p>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
-                <span className="text-blue-400 font-pixel">01</span>
-              </div>
-              <h3 className="text-lg text-gray-300">Deep Focus</h3>
-              <p className="text-gray-400">
-                Your product gets our full, undivided attention - no context
-                switching between multiple clients.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
-                <span className="text-blue-400 font-pixel">02</span>
-              </div>
-              <h3 className="text-lg text-gray-300">Think First</h3>
-              <p className="text-gray-400">
-                We take time to understand problems deeply before jumping into
-                solutions.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
-                <span className="text-blue-400 font-pixel">03</span>
-              </div>
-              <h3 className="text-lg text-gray-300">Built to Grow</h3>
-              <p className="text-gray-400">
-                We build systems that can evolve with your needs, not quick
-                fixes that need constant rewrites.
-              </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              {["Deep Understanding", "Quality First", "Full Ownership"].map(
+                (reason, i) => (
+                  <div key={i} className="text-left">
+                    <div className="text-blue-400 font-pixel mb-2">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <h3 className="text-gray-300 mb-2">{reason}</h3>
+                    <p className="text-sm text-gray-500">
+                      {i === 0 &&
+                        "We take time to understand your business and users deeply."}
+                      {i === 1 &&
+                        "We believe in doing things right the first time."}
+                      {i === 2 &&
+                        "We treat your product like our own, thinking long-term."}
+                    </p>
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>
