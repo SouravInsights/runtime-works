@@ -410,6 +410,27 @@ const LandingPage = () => {
 
 export default LandingPage;
 
+const RateInput = ({
+  value,
+  onChange,
+  color = "blue",
+}: {
+  value: number;
+  onChange: (value: number) => void;
+  color?: string;
+}) => (
+  <div className="relative group">
+    <input
+      type="number"
+      value={value}
+      onChange={(e) => onChange(Number(e.target.value))}
+      className={`w-24 bg-${color}-500/10 border border-${color}-500/20 rounded 
+                 px-2 py-1 text-${color}-400 focus:outline-none focus:border-${color}-500/40`}
+    />
+    <span className="text-sm text-gray-500 ml-2">/hr</span>
+  </div>
+);
+
 const WhyWorkWithUs = () => {
   const [activeComparison, setActiveComparison] = useState<
     "traditional" | "runtime" | null
@@ -429,28 +450,6 @@ const WhyWorkWithUs = () => {
   const calculateRuntimeCost = () => {
     return 350 * 160; // Our team rate
   };
-
-  // Animated input component
-  const RateInput = ({
-    value,
-    onChange,
-    color = "blue",
-  }: {
-    value: number;
-    onChange: (value: number) => void;
-    color?: string;
-  }) => (
-    <div className="relative group">
-      <input
-        type="number"
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className={`w-24 bg-${color}-500/10 border border-${color}-500/20 rounded 
-                   px-2 py-1 text-${color}-400 focus:outline-none focus:border-${color}-500/40`}
-      />
-      <span className="text-sm text-gray-500 ml-2">/hr</span>
-    </div>
-  );
 
   return (
     <section className="relative py-24 overflow-hidden">
@@ -563,12 +562,13 @@ const WhyWorkWithUs = () => {
                             <div className="text-gray-300 mb-2">Designer</div>
                             <RateInput
                               value={rates.designer}
-                              onChange={(value) =>
+                              onChange={(value) => {
+                                console.log("Parent updating:", value);
                                 setRates((prev) => ({
                                   ...prev,
                                   designer: value,
-                                }))
-                              }
+                                }));
+                              }}
                               color="purple"
                             />
                           </div>
