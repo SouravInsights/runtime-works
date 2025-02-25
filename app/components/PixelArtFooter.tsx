@@ -52,11 +52,11 @@ const PixelFooter = () => {
       {/* Footer Content */}
       <div className="relative bg-black/40 backdrop-blur-sm py-16">
         <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <p className="font-pixel text-sm md:text-base text-gray-400 leading-relaxed">
+          <div className="max-w-5xl mx-auto text-center space-y-6">
+            <p className="font-mono text-3xl text-gray-400 leading-relaxed">
               "The best way to predict the future is to invent it."
             </p>
-            <p className="font-pixel text-xs text-gray-500">― Alan Kay</p>
+            <p className="font-mono text-2xl text-gray-500">― Alan Kay</p>
           </div>
 
           {/* Bottom Bar - Simplified and more responsive */}

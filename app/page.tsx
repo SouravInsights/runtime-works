@@ -167,9 +167,9 @@ const LandingPage = () => {
               className="space-y-8"
             >
               <div className="space-y-4">
-                <h1 className="font-geistMono text-2xl md:text-4xl font-bold">
+                <h1 className="font-mono text-2xl md:text-6xl font-medium">
                   <span className="text-transparent bg-clip-text bg-green-400">
-                    runtime.works
+                    runtime works
                   </span>
                 </h1>
 
@@ -222,7 +222,9 @@ const LandingPage = () => {
                   {/* Step 1 */}
                   <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                      <span className="text-blue-400 font-pixel">01</span>
+                      <span className="text-blue-400 font-mono text-lg font-semibold">
+                        01
+                      </span>
                     </div>
                     <div>
                       <h4 className="text-lg font-medium text-gray-100">
@@ -238,7 +240,9 @@ const LandingPage = () => {
                   {/* Step 2 */}
                   <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                      <span className="text-purple-400 font-pixel">02</span>
+                      <span className="text-purple-400 font-mono text-lg font-semibold">
+                        02
+                      </span>
                     </div>
                     <div>
                       <h4 className="text-lg font-medium text-gray-100">
@@ -254,7 +258,9 @@ const LandingPage = () => {
                   {/* Step 3 */}
                   <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
-                      <span className="text-green-400 font-pixel">03</span>
+                      <span className="text-green-400 font-mono text-lg font-semibold">
+                        03
+                      </span>
                     </div>
                     <div>
                       <h4 className="text-lg font-medium text-gray-100">
@@ -270,7 +276,9 @@ const LandingPage = () => {
                   {/* Step 4 */}
                   <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center">
-                      <span className="text-yellow-400 font-pixel">04</span>
+                      <span className="text-yellow-400 font-mono text-lg font-semibold">
+                        04
+                      </span>
                     </div>
                     <div>
                       <h4 className="text-lg font-medium text-gray-100">
@@ -331,7 +339,7 @@ const LandingPage = () => {
               transition={{ duration: 0.5 }}
               className="text-center space-y-8"
             >
-              <h2 className="font-geistMono text-xl md:text-4xl font-bold">
+              <h2 className="font-mono text-xl md:text-4xl font-bold">
                 Let's Build Something
               </h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
@@ -397,7 +405,7 @@ const WhyWorkWithUs = () => {
   };
 
   const calculateRuntimeCost = () => {
-    return 350 * 160; // Our team rate
+    return 60 * 160; // Our team rate
   };
 
   return (
@@ -420,7 +428,7 @@ const WhyWorkWithUs = () => {
               <button
                 key={id}
                 onClick={() => setActiveView(id as "time" | "cost")}
-                className={`px-4 py-2 font-pixel text-sm rounded-lg transition-colors flex items-center gap-2
+                className={`px-4 py-2 font-mono text-sm rounded-lg transition-colors flex items-center gap-2
                   ${
                     activeView === id
                       ? "bg-blue-500/20 border border-blue-500/40 text-blue-400"
@@ -447,7 +455,7 @@ const WhyWorkWithUs = () => {
               onMouseLeave={() => setActiveComparison(null)}
             >
               <div className="pb-24">
-                <h3 className="font-pixel text-sm text-gray-400 mb-6">
+                <h3 className="font-mono text-sm text-gray-400 mb-6">
                   Traditional Way
                 </h3>
 
@@ -463,7 +471,7 @@ const WhyWorkWithUs = () => {
                       <div className="space-y-8">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                            <span className="font-mono text-purple-400">
+                            <span className="font-mono text-lg font-semibold text-purple-400 ">
                               1w
                             </span>
                           </div>
@@ -479,7 +487,9 @@ const WhyWorkWithUs = () => {
 
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                            <span className="font-mono text-blue-400">2w</span>
+                            <span className="font-mono text-lg font-semibold text-blue-400">
+                              2w
+                            </span>
                           </div>
                           <div>
                             <div className="text-gray-300">Team Alignment</div>
@@ -491,7 +501,9 @@ const WhyWorkWithUs = () => {
 
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
-                            <span className="font-mono text-red-400">4w</span>
+                            <span className="font-mono text-lg font-semibold text-red-400">
+                              4w
+                            </span>
                           </div>
                           <div>
                             <div className="text-gray-300">Start Building</div>
@@ -505,7 +517,9 @@ const WhyWorkWithUs = () => {
                       <div className="space-y-8">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                            <span className="font-mono text-purple-400">$</span>
+                            <span className="font-mono font-semibold text-purple-400">
+                              $
+                            </span>
                           </div>
                           <div className="flex-1">
                             <div className="text-gray-300 mb-2">Designer</div>
@@ -525,7 +539,9 @@ const WhyWorkWithUs = () => {
 
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                            <span className="font-mono text-blue-400">$</span>
+                            <span className="font-mono font-semibold text-blue-400">
+                              $
+                            </span>
                           </div>
                           <div className="flex-1">
                             <div className="text-gray-300 mb-2">
@@ -546,7 +562,9 @@ const WhyWorkWithUs = () => {
 
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
-                            <span className="font-mono text-green-400">$</span>
+                            <span className="font-mono font-semibold text-green-400">
+                              $
+                            </span>
                           </div>
                           <div className="flex-1">
                             <div className="text-gray-300 mb-2">
@@ -597,7 +615,7 @@ const WhyWorkWithUs = () => {
               onMouseLeave={() => setActiveComparison(null)}
             >
               <div className="pb-24">
-                <h3 className="font-pixel text-sm text-blue-400 mb-6">
+                <h3 className="font-mono text-sm text-blue-400 mb-6">
                   runtime.works Way
                 </h3>
 
@@ -613,7 +631,9 @@ const WhyWorkWithUs = () => {
                       <div className="space-y-8">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                            <span className="font-mono text-blue-400">1d</span>
+                            <span className="font-mono text-lg font-semibold text-blue-400">
+                              1d
+                            </span>
                           </div>
                           <div>
                             <div className="text-gray-300">Quick Chat</div>
@@ -625,7 +645,25 @@ const WhyWorkWithUs = () => {
 
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                            <span className="font-mono text-blue-400">2d</span>
+                            <span className="font-mono text-lg font-semibold text-blue-400">
+                              2d
+                            </span>
+                          </div>
+                          <div>
+                            <div className="text-gray-300">
+                              Project Alignment
+                            </div>
+                            {/* <div className="text-sm text-gray-500">
+                              All in one team
+                            </div> */}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                            <span className="font-mono text-lg font-semibold text-blue-400">
+                              3d
+                            </span>
                           </div>
                           <div>
                             <div className="text-gray-300">Start Building</div>
@@ -639,7 +677,9 @@ const WhyWorkWithUs = () => {
                       <div className="space-y-8">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                            <span className="font-mono text-blue-400">$</span>
+                            <span className="font-mono font-semibold text-blue-400">
+                              $
+                            </span>
                           </div>
                           <div className="flex-1">
                             <div className="text-gray-300 mb-2">
@@ -696,7 +736,7 @@ const WhyWorkWithUs = () => {
 
           {/* "Real Reasons" section */}
           <div className="mt-24 text-center">
-            <p className="text-sm text-gray-500 font-pixel mb-16">
+            <p className="text-sm text-gray-500 font-mono mb-16">
               But here's why you should really work with us...
             </p>
 
@@ -704,7 +744,7 @@ const WhyWorkWithUs = () => {
               {["Deep Understanding", "Quality First", "Full Ownership"].map(
                 (reason, i) => (
                   <div key={i} className="text-left">
-                    <div className="text-blue-400 font-pixel mb-2">
+                    <div className="text-blue-400 font-mono mb-2">
                       {String(i + 1).padStart(2, "0")}
                     </div>
                     <h3 className="text-gray-300 mb-2">{reason}</h3>
