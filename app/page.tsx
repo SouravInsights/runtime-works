@@ -167,8 +167,8 @@ const LandingPage = () => {
               className="space-y-8"
             >
               <div className="space-y-4">
-                <h1 className="font-pixel text-2xl md:text-4xl font-bold">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                <h1 className="font-geistMono text-2xl md:text-4xl font-bold">
+                  <span className="text-transparent bg-clip-text bg-green-400">
                     runtime.works
                   </span>
                 </h1>
@@ -301,7 +301,7 @@ const LandingPage = () => {
               className="mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Recent Work
+                Our in-house projects
               </h2>
               <p className="text-gray-400 max-w-2xl">
                 Projects where understanding the problem was as crucial as
@@ -331,7 +331,7 @@ const LandingPage = () => {
               transition={{ duration: 0.5 }}
               className="text-center space-y-8"
             >
-              <h2 className="font-pixel text-xl md:text-4xl font-bold">
+              <h2 className="font-geistMono text-xl md:text-4xl font-bold">
                 Let's Build Something
               </h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
@@ -386,9 +386,9 @@ const WhyWorkWithUs = () => {
   >(null);
   const [activeView, setActiveView] = useState<"time" | "cost">("time");
   const [rates, setRates] = useState({
-    designer: 120,
-    frontend: 150,
-    backend: 160,
+    designer: 30,
+    frontend: 50,
+    backend: 50,
   });
 
   // Calculate costs for a month (160 hours)
@@ -646,7 +646,7 @@ const WhyWorkWithUs = () => {
                               Full-Stack Team
                             </div>
                             <div className="font-mono text-blue-400">
-                              $350/hr
+                              $60/hr
                             </div>
                             <div className="text-sm text-gray-500 mt-1">
                               Everything included
