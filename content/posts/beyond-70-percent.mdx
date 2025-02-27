@@ -1,0 +1,79 @@
+---
+title: "Building Beyond 70%: Why Craftsmanship Still Matters in the AI Era"
+description: "In a world of AI-generated code, human craft and creativity remain essential for software that lasts."
+date: "2025-02-27"
+author: "runtime.works"
+tags: ["ai", "craftsmanship", "software-development"]
+readingTime: "8 min read"
+---
+
+# Building Beyond 70%: Why Craftsmanship Still Matters in the AI Era
+
+In a small conference room in San Francisco, a startup founder excitedly shows off their latest product to a group of investors. "We built this entire app in just three days using AI," they proclaim. The demo flows smoothly along the prepared path. The investors are impressed. Then someone clicks an unexpected button, and the illusion shatters as the application crashes spectacularly.
+
+This scene is playing out with increasing frequency across the tech landscape. AI-assisted development has made it possible to go from idea to demo with breathtaking speed. But there's a catch that experienced builders know all too well: getting 70% of the way there is surprisingly easy; it's the final 30% that separates throwaway demos from software that lasts.
+
+## The 70/30 Reality
+
+The "70% problem" identified by software leaders like Addy Osmani and Gergely Orosz perfectly captures what many teams are experiencing firsthand. AI coding tools can quickly generate a functional prototype that handles the "happy path," but they struggle with edge cases, error handling, performance optimization, and the countless other details that make software robust and maintainable.
+
+This isn't just about code completion or function implementation. It's about software quality holistically. The polish that makes good software great—thoughtful error messages, graceful degradation, accessibility, performance on low-end devices—remains stubbornly resistant to automation.
+
+```jsx
+// AI-generated code often handles the happy path...
+function submitForm(data) {
+  // Send data to API
+  api.post("/submit", data);
+  // Show success message
+  showMessage("Success!");
+}
+
+// But misses critical error handling, edge cases, and user experience details
+function submitFormWithCraft(data) {
+  // Validate data before submission
+  if (!isValid(data)) {
+    showMessage("Please check your input and try again", "error");
+    return;
+  }
+
+  // Show loading state
+  setLoading(true);
+
+  // Send data to API with error handling
+  api
+    .post("/submit", data)
+    .then((response) => {
+      // Show success message with details
+      showMessage(
+        `Thanks, ${data.name}! Your submission was received.`,
+        "success"
+      );
+      // Analytics tracking
+      trackEvent("form_submission_success");
+    })
+    .catch((error) => {
+      // Handle specific error types
+      if (error.code === "NETWORK_ERROR") {
+        showMessage(
+          "Connection issue. Please check your internet and try again.",
+          "error"
+        );
+      } else if (error.code === "VALIDATION_ERROR") {
+        showMessage(
+          "Some information appears incorrect. Please review and try again.",
+          "error"
+        );
+      } else {
+        showMessage(
+          "Something went wrong. Our team has been notified.",
+          "error"
+        );
+        // Log error for monitoring
+        logError(error);
+      }
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+}
+```

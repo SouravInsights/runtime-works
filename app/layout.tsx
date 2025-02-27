@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import PixelFooter from "./components/PixelArtFooter";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,6 +71,37 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${crimsonPro.variable} ${pressStart2P.variable} antialiased`}
       >
         <main>{children}</main>
+        {/* Header Navigation */}
+        <header className="fixed top-0 left-0 right-0 z-50 p-4 backdrop-blur bg-black/50 border-b border-white/10">
+          <div className="container mx-auto flex justify-between items-center">
+            <Link
+              href="/"
+              className="text-xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400"
+            >
+              runtime.works
+            </Link>
+            <nav className="flex space-x-6">
+              <Link
+                href="/"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/manifesto"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Manifesto
+              </Link>
+              <Link
+                href="/thoughts"
+                className="text-blue-400 hover:text-blue-300 transition-colors"
+              >
+                Thoughts
+              </Link>
+            </nav>
+          </div>
+        </header>
         <PixelFooter />
       </body>
     </html>
