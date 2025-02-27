@@ -154,7 +154,7 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center py-24">
         <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-transparent"
+          className="inset-0 bg-gradient-to-b from-blue-500/20 to-transparent"
           style={{ opacity }}
         />
 
