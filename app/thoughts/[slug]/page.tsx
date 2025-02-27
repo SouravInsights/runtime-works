@@ -4,10 +4,7 @@ import { notFound } from "next/navigation";
 import matter from "gray-matter";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, User, Tag } from "lucide-react";
-import dynamic from "next/dynamic";
-
-// Dynamic import for MDX content
-const MDXContent = dynamic(() => import("./MDXContent"));
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 // Function to get a single blog post by slug
 async function getBlogPost(slug: string) {
@@ -51,14 +48,13 @@ export async function generateStaticParams() {
     }));
 }
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getBlogPost(params.slug);
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const resolvedParams = await params;
+  const post = await getBlogPost(resolvedParams.slug);
 
   if (!post) {
     notFound();
@@ -145,7 +141,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* MDX Content */}
         <div className="prose prose-invert max-w-none pt-8 text-gray-200">
-          <MDXContent content={post.content} />
+          <MDXRemote source={post.content} />
         </div>
       </div>
 
