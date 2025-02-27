@@ -76,10 +76,11 @@ export default function RootLayout({
           <div className="container mx-auto flex justify-between items-center">
             <Link
               href="/"
-              className="text-xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400"
+              className="text-xl bg-clip-text text-transparent bg-green-400"
             >
               runtime.works
             </Link>
+
             <nav className="flex space-x-6">
               <Link
                 href="/"
