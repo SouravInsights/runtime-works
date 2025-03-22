@@ -10,6 +10,7 @@ import {
 import { Clock, GitBranch, Terminal, DollarSign } from "lucide-react";
 import Link from "next/link";
 import { LampContainer } from "./components/lamp";
+import { MatrixText } from "./components/matrix-text";
 
 interface ProjectCardProps {
   title: string;
@@ -180,7 +181,12 @@ const LandingPage = () => {
                 <div className="space-y-4">
                   <h1 className="font-mono text-2xl md:text-6xl font-medium">
                     <span className="text-transparent bg-clip-text bg-green-400">
-                      runtime works
+                      <MatrixText
+                        text="runtime works"
+                        initialDelay={200}
+                        letterAnimationDuration={500}
+                        letterInterval={100}
+                      />
                     </span>
                   </h1>
 
