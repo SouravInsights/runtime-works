@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
@@ -16,6 +17,7 @@ interface ProjectCardProps {
   tech: string[];
   year: string;
   link: string;
+  imageUrl?: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -24,6 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   tech,
   year,
   link,
+  imageUrl,
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
@@ -33,6 +36,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     className="group relative bg-black/50 backdrop-blur border border-white/10 rounded-lg overflow-hidden"
   >
     <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+    {imageUrl && (
+      <Image src={imageUrl} alt="project-image" width={500} height={200} />
+    )}
     <div className="relative p-6 space-y-4">
       <div className="flex justify-between items-start">
         <h3 className="text-xl font-semibold text-gray-100">{title}</h3>
@@ -85,6 +91,7 @@ const LandingPage = () => {
 
   const projects = [
     {
+      imageUrl: "/fairforms-cover.png",
       title: "FairForms",
       description:
         "A self-hosted form builder that doesn't cost a kidney per month. Create beautiful, conversational forms without breaking the bank.",
@@ -93,6 +100,7 @@ const LandingPage = () => {
       link: "https://www.fairforms.xyz/",
     },
     {
+      imageUrl: "/vendorly-cover.png",
       title: "Vendorly",
       description:
         "A web app for fashion retailers to manage vendor meetings, organize design collections, and share designs with customizable privacy options.",
