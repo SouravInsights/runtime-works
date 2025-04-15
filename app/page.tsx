@@ -9,6 +9,8 @@ import {
 } from "framer-motion";
 import { Clock, GitBranch, Terminal, DollarSign } from "lucide-react";
 import Link from "next/link";
+import { LampContainer } from "./components/lamp";
+import { MatrixText } from "./components/matrix-text";
 
 interface ProjectCardProps {
   title: string;
@@ -152,150 +154,168 @@ const LandingPage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center py-24">
-        <motion.div
-          className="inset-0 bg-gradient-to-b from-blue-500/20 to-transparent"
-          style={{ opacity }}
-        />
+      <LampContainer>
+        <motion.h1
+          initial={{ opacity: 0.5, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          className="bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text"
+        >
+          <motion.div
+            className="inset-0 bg-gradient-to-b from-blue-500/20 to-transparent"
+            style={{ opacity }}
+          />
 
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto space-y-24">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
-            >
-              <div className="space-y-4">
-                <h1 className="font-mono text-2xl md:text-6xl font-medium">
-                  <span className="text-transparent bg-clip-text bg-green-400">
-                    runtime works
-                  </span>
-                </h1>
+          <div className="pt-[15rem] container mx-auto ">
+            <div className="max-w-5xl mx-auto space-y-24">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="space-y-8 text-center"
+              >
+                <div className="space-y-4">
+                  <h1 className="font-mono text-4xl md:text-6xl font-bold">
+                    <span className="text-transparent bg-clip-text  text-white">
+                      <MatrixText
+                        text="runtime works"
+                        initialDelay={200}
+                        letterAnimationDuration={500}
+                        letterInterval={100}
+                      />
+                    </span>
+                  </h1>
 
-                <p className="text-xl md:text-2xl text-gray-400 max-w-2xl">
-                  Building software that matters.
-                </p>
+                  <p className="text-xl md:text-2xl text-gray-400">
+                    Building software that matters.
+                  </p>
 
-                {/* Manifesto button */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                  <Link
-                    href="/manifesto"
-                    className="inline-flex items-center px-6 py-3 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 transition-colors group"
+                  {/* Manifesto button */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
                   >
-                    <span className="font-heading text-sm">Read our story</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="ml-2 group-hover:translate-x-1 transition-transform"
+                    <Link
+                      href="/manifesto"
+                      className="inline-flex items-center px-6 py-3 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 transition-colors group"
                     >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </Link>
-                </motion.div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] p-6 md:p-8">
-                <h3 className="text-xl font-semibold text-gray-100 mb-6">
-                  Our Process
-                </h3>
-                <div className="space-y-6 md:space-y-8">
-                  {/* Step 1 */}
-                  <div className="flex flex-col md:flex-row items-start gap-4">
-                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                      <span className="text-blue-400 font-mono text-lg font-semibold">
-                        01
+                      <span className="font-heading text-sm">
+                        Read our story
                       </span>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-gray-100">
-                        Discovery
-                      </h4>
-                      <p className="text-gray-400 text-sm">
-                        We dive deep into your business goals, challenges, and
-                        user needs to craft a tailored solution.
-                      </p>
-                    </div>
-                  </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="ml-2 group-hover:translate-x-1 transition-transform"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </motion.div>
+                </div>
+              </motion.div>
 
-                  {/* Step 2 */}
-                  <div className="flex flex-col md:flex-row items-start gap-4">
-                    <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                      <span className="text-purple-400 font-mono text-lg font-semibold">
-                        02
-                      </span>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="relative bg-black/40 backdrop-blur-sm rounded-lg border border-white/[0.08] p-6 md:p-8">
+                  <h3 className="text-xl font-semibold text-gray-100 mb-6">
+                    Our Process
+                  </h3>
+                  <div className="space-y-6 md:space-y-8">
+                    {/* Step 1 */}
+                    <div className="flex flex-col md:flex-row items-start gap-4">
+                      <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                        <span className="text-blue-400 font-mono text-lg font-semibold">
+                          01
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-100">
+                          Discovery
+                        </h4>
+                        <p className="text-gray-400 text-sm">
+                          We dive deep into your business goals, challenges, and
+                          user needs to craft a tailored solution.
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-gray-100">
-                        Design & Prototyping
-                      </h4>
-                      <p className="text-gray-400 text-sm">
-                        We create intuitive designs and interactive prototypes
-                        to ensure the solution aligns with your vision.
-                      </p>
-                    </div>
-                  </div>
 
-                  {/* Step 3 */}
-                  <div className="flex flex-col md:flex-row items-start gap-4">
-                    <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
-                      <span className="text-green-400 font-mono text-lg font-semibold">
-                        03
-                      </span>
+                    {/* Step 2 */}
+                    <div className="flex flex-col md:flex-row items-start gap-4">
+                      <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
+                        <span className="text-purple-400 font-mono text-lg font-semibold">
+                          02
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-100">
+                          Design & Prototyping
+                        </h4>
+                        <p className="text-gray-400 text-sm">
+                          We create intuitive designs and interactive prototypes
+                          to ensure the solution aligns with your vision.
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-gray-100">
-                        Development
-                      </h4>
-                      <p className="text-gray-400 text-sm">
-                        Using cutting-edge technologies, we build scalable and
-                        maintainable systems.
-                      </p>
-                    </div>
-                  </div>
 
-                  {/* Step 4 */}
-                  <div className="flex flex-col md:flex-row items-start gap-4">
-                    <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center">
-                      <span className="text-yellow-400 font-mono text-lg font-semibold">
-                        04
-                      </span>
+                    {/* Step 3 */}
+                    <div className="flex flex-col md:flex-row items-start gap-4">
+                      <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
+                        <span className="text-green-400 font-mono text-lg font-semibold">
+                          03
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-100">
+                          Development
+                        </h4>
+                        <p className="text-gray-400 text-sm">
+                          Using cutting-edge technologies, we build scalable and
+                          maintainable systems.
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-gray-100">
-                        Launch & Iterate
-                      </h4>
-                      <p className="text-gray-400 text-sm">
-                        We deploy your product and continuously refine it based
-                        on real-world feedback.
-                      </p>
+
+                    {/* Step 4 */}
+                    <div className="flex flex-col md:flex-row items-start gap-4">
+                      <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center">
+                        <span className="text-yellow-400 font-mono text-lg font-semibold">
+                          04
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-100">
+                          Launch & Iterate
+                        </h4>
+                        <p className="text-gray-400 text-sm">
+                          We deploy your product and continuously refine it
+                          based on real-world feedback.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </motion.h1>
+      </LampContainer>
 
       {/* Work Section */}
       <section className="relative py-24 overflow-hidden">
