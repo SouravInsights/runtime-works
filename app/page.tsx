@@ -170,7 +170,7 @@ const LandingPage = () => {
             style={{ opacity }}
           />
 
-          <div className="pt-[15rem] container mx-auto px-6">
+          <div className="pt-[15rem] container mx-auto ">
             <div className="max-w-5xl mx-auto space-y-24">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -179,8 +179,8 @@ const LandingPage = () => {
                 className="space-y-8 text-center"
               >
                 <div className="space-y-4">
-                  <h1 className="font-mono text-2xl md:text-6xl font-medium">
-                    <span className="text-transparent bg-clip-text bg-green-400">
+                  <h1 className="font-mono text-4xl md:text-6xl font-bold">
+                    <span className="text-transparent bg-clip-text  text-white">
                       <MatrixText
                         text="runtime works"
                         initialDelay={200}

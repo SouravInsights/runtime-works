@@ -15,12 +15,12 @@ export default function Header() {
   const [isGooeyOpen, setIsGooeyOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 p-4 backdrop-blur bg-black/50 border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 p-4 backdrop-blur md:bg-black/50 md:border-b md:border-white/10">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link
           href="/"
-          className="text-xl bg-clip-text text-transparent bg-green-400"
+          className="text-xl bg-clip-text text-transparent text-white"
         >
           runtime.works
         </Link>
@@ -29,19 +29,19 @@ export default function Header() {
         <nav className="hidden md:flex gap-6">
           <Link
             href="/"
-            className="text-gray-400 hover:text-white transition-colors"
+            className="text-gray-400 hover:text-blue-300 transition-colors"
           >
             Home
           </Link>
           <Link
             href="/manifesto"
-            className="text-gray-400 hover:text-white transition-colors"
+            className="text-gray-400 hover:text-blue-300 transition-colors"
           >
             Manifesto
           </Link>
           <Link
             href="/thoughts"
-            className="text-blue-400 hover:text-blue-300 transition-colors"
+            className="text-gray-400 hover:text-blue-300 transition-colors"
           >
             Thoughts
           </Link>
@@ -76,7 +76,7 @@ export default function Header() {
                   return (
                     <motion.button
                       key={item.label}
-                      className="absolute w-12 h-12 bg-[#efefef] rounded-full flex items-center justify-center shadow-lg"
+                      className="absolute w-10 h-10 bg-[#efefef] rounded-md flex items-center justify-center shadow-lg"
                       initial={{ y: 0, opacity: 0 }}
                       animate={{
                         y: (index + 1) * 50, // Moves downward
@@ -105,7 +105,7 @@ export default function Header() {
 
             {/* Gooey Menu Button */}
             <motion.button
-              className="relative w-12 h-12 bg-[#efefef] rounded-full flex items-center justify-center shadow-lg"
+              className="relative w-10 h-10 bg-[#efefef] rounded-md flex items-center justify-center shadow-lg"
               onClick={() => setIsGooeyOpen(!isGooeyOpen)}
               whileTap={{ scale: 0.9 }}
             >
